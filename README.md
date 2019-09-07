@@ -1,6 +1,6 @@
-# Nombre del proyecto
+# Realtime Crowd Insights
 
-Application to be awesome
+Mobile application (IOS) to obtain demographic information of the analysis of people in images, Facial Recognition.
 
 ## Table of contents
 
@@ -11,17 +11,12 @@ Application to be awesome
 * [Setup the project](#setup-the-project)
 * [Running the stack for development](#running-the-stack-for-development)
 * [Stop the project](#stop-the-project)
-* [Restoring the database](#restoring-the-database)
-* [Debugging](#debugging)
-* [Running specs](#running-specs)
-* [Checking code for potential issues](#checking-code-for-potential-issues)
-
 
 ### Client Details
 
 | Name               | Email             | Role |
 | ------------------ | ----------------- | ---- |
-| Nombre del cliente | prueba@prueba.com | CEO  |
+| Aldo Lares | alares@bluepeople.com | Cliente  |
 
 
 ### Environment URLS
@@ -33,171 +28,67 @@ Application to be awesome
 
 | Name           | Email             | Role        |
 | -------------- | ----------------- | ----------- |
-| Nombre miembro | prueba@prueba.com | Development |
-| Nombre miembro | prueba@prueba.com | Development |
-| Nombre miembro | prueba@prueba.com | Development |
+| Lorraine Bichara Assad | A01193063@itesm.mx | Development/ Product Owner Proxy |
+| Mauricio Juan Garcia Amaya | A01193289@itesm.mx | Development/ Administrador del Proyecto |
+| Miguel Bazán Aviña | A01281010@itesm.mx | Development/ Scrum Master |
+| Miguel Angel Rocha Cabello | A01281368@itesm.mx | Development/ Administrador de Configuración |
 
 ### Management tools
 
 You should ask for access to this tools if you don't have it already:
 
-* [Github repo](https://github.com/)
-* [Backlog]()
-* [Heroku](https://crowdfront-staging.herokuapp.com/)
-* [Documentation](https://drive.com)
+* [Github repo](https://github.com/ProyectoIntegrador2018/realtime_crowd_insights.git)
+* [Backlog](https://github.com/ProyectoIntegrador2018/realtime_crowd_insights/issues)
+* [Documentation](https://drive.google.com/drive/folders/1y1KpT7vFpG4_QRMRK7sWLa76lrSAd-c-)
 
 ## Development
 
 ### Setup the project
 
-You'll definitely want to install [`plis`](https://github.com/IcaliaLabs/plis), as in this case will
-let you bring up the containers needed for development. This is done by running the command
-`plis start`, which will start up the services in the `development` group (i.e. rails
-and sidekiq), along with their dependencies (posgres, redis, etc).
+Make sure you have the following:
 
-After installing please you can follow this simple steps:
+* MacOS Machine cabaple of running Xcode (version 10.1 or newer).
+* Install developer tools
 
-1. Clone this repository into your local machine
+1. To install developer tools run:
 
 ```bash
-$ git clone git@github.com:IcaliaLabs/crowdfront.git
+$ xcode-select --install
 ```
+2. You will be prompted for an agreement and permissions, say yes.
 
-2. Fire up a terminal and run:
+After installing, clone the repository into your machine:
+
+3. Clone this repository into your local machine
 
 ```bash
-$ plis run web bash
+$ git clone https://github.com/ProyectoIntegrador2018/realtime_crowd_insights.git
 ```
 
-3. Inside the container you need to migrate the database:
+### Running project for Desktop Simulation
 
-```
-% rails db:migrate
-```
+1. Fire up the project from the downloaded folder
 
-### Running the stack for Development
+2. Specify the iPhone model for the simulation, near the Run Button
 
-1. Fire up a terminal and run: 
+3. Run the project
 
-```
-plis start
-```
+Xcode should open and run the project like normal.
 
-That command will lift every service crowdfront needs, such as the `rails server`, `postgres`, and `redis`.
+### Running project for Mobile Simulation
 
+1. Fire up the project from the downloaded folder
 
-It may take a while before you see anything, you can follow the logs of the containers with:
+2. Plug the mobile device into the computer
 
-```
-$ docker-compose logs
-```
+3. Select the device
 
-Once you see an output like this:
+4. Unlock the device and run the application
 
-```
-web_1   | => Booting Puma
-web_1   | => Rails 5.1.3 application starting in development on http://0.0.0.0:3000
-web_1   | => Run `rails server -h` for more startup options
-web_1   | => Ctrl-C to shutdown server
-web_1   | Listening on 0.0.0.0:3000, CTRL+C to stop
-```
+#### Troubleshooting Common Errors
 
-This means the project is up and running.
+* **Signing Requires a Development Team** - Xcode requires that you've connected a Team to your project in order to run. Go to "General" tab of the Project Settings, open the "Team" menu and select your team, in case you dont have a team, select "Add an Account..." and create one with your Apple ID.
 
 ### Stop the project
 
-In order to stop crowdfront as a whole you can run:
-
-```
-% plis stop
-```
-
-This will stop every container, but if you need to stop one in particular, you can specify it like:
-
-```
-% plis stop web
-```
-
-`web` is the service name located on the `docker-compose.yml` file, there you can see the services name and stop each of them if you need to.
-
-### Restoring the database
-
-You probably won't be working with a blank database, so once you are able to run crowdfront you can restore the database, to do it, first stop all services:
-
-```
-% plis stop
-```
-
-Then just lift up the `db` service:
-
-```
-% plis start db
-```
-
-The next step is to login to the database container:
-
-```
-% docker exec -ti crowdfront_db_1 bash
-```
-
-This will open up a bash session in to the database container.
-
-Up to this point we just need to download a database dump and copy under `crowdfront/backups/`, this directory is mounted on the container, so you will be able to restore it with:
-
-```
-root@a3f695b39869:/# bin/restoredb crowdfront_dev db/backups/<databaseDump>
-```
-
-If you want to see how this script works, you can find it under `bin/restoredb`
-
-Once the script finishes its execution you can just exit the session from the container and lift the other services:
-
-```
-% plis start
-```
-
-### Debugging
-
-We know you love to use `debugger`, and who doesn't, and with Docker is a bit tricky, but don't worry, we have you covered.
-
-Just run this line at the terminal and you can start debugging like a pro:
-
-```
-% plis attach web
-```
-
-This will display the logs from the rails app, as well as give you access to stop the execution on the debugging point as you would expect.
-
-**Take note that if you kill this process you will kill the web service, and you will probably need to lift it up again.**
-
-### Running specs
-
-To run specs, you can do:
-
-```
-$ plis run test rspec
-```
-
-Or for a specific file:
-
-```
-$ plis run test rspec spec/models/user_spec.rb
-```
-
-### Checking code for potential issues
-
-To run specs, you can do:
-
-```
-$ plis run web reek
-```
-
-```
-$ plis run web rubocop
-```
-
-```
-$ plis run web scss_lint
-```
-
-Or any other linter you have.
+In order to stop the simualtion you can just click the stop button on top of the project. 
