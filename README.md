@@ -6,10 +6,11 @@ Mobile application (IOS) to obtain demographic information of the analysis of pe
 
 * [Client Details](#client-details)
 * [Environment URLS](#environment-urls)
-* [Da Team](#team)
-* [Management resources](#management-resources)
+* [Da Team](#da-team)
+* [Management tools](#management-tools)
 * [Setup the project](#setup-the-project)
-* [Running the stack for development](#running-the-stack-for-development)
+* [Running project for Desktop Simulation](#running-project-for-desktop-simulation)
+* [Running project for Mobile Simulation](#running-project-for-mobile-simulation)
 * [Stop the project](#stop-the-project)
 
 ### Client Details
