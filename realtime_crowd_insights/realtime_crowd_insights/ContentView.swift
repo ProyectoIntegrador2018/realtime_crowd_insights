@@ -4,7 +4,7 @@
 //
 //  Created by Miguel Bazán on 9/23/19.
 //  Copyright © 2019 Miguel Bazán. All rights reserved.
-//
+//  Icons obtained from: http://www.iconbeast.com/
 
 import SwiftUI
 
@@ -13,24 +13,33 @@ struct ContentView: View {
  
     var body: some View {
         TabView(selection: $selection){
-            Text("First View")
+            Text("History Tab")
                 .font(.title)
                 .tabItem {
                     VStack {
-                        Image("first")
-                        Text("First")
+                        Image("history_icon")
+                        Text("History")
                     }
                 }
                 .tag(0)
-            Text("Second View")
+            Text("Camera")
                 .font(.title)
                 .tabItem {
                     VStack {
-                        Image("second")
-                        Text("Second")
+                        Image("camera_icon")
+                        Text("Camera")
                     }
                 }
                 .tag(1)
+            Text("Photos")
+            .font(.title)
+            .tabItem {
+                VStack {
+                    Image("photos_icon")
+                    Text("Photos")
+                }
+            }
+            .tag(2)
         }
     }
 }
