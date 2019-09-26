@@ -1,5 +1,7 @@
 # Realtime Crowd Insights
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/da71592131fb15bceb70/maintainability)](https://codeclimate.com/github/ProyectoIntegrador2018/realtime_crowd_insights/maintainability)
+
 Mobile application (IOS) to obtain demographic information of the analysis of people in images, Facial Recognition.
 
 ## Table of contents
