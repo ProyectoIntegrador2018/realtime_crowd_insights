@@ -10,6 +10,7 @@ Mobile application (IOS) to obtain demographic information of the analysis of pe
 * [Environment URLS](#environment-urls)
 * [Da Team](#da-team)
 * [Management tools](#management-tools)
+* [Technology stack](#technology-stack)
 * [Setup the project](#setup-the-project)
 * [Running project for Desktop Simulation](#running-project-for-desktop-simulation)
 * [Running project for Mobile Simulation](#running-project-for-mobile-simulation)
@@ -24,8 +25,7 @@ Mobile application (IOS) to obtain demographic information of the analysis of pe
 
 ### Environment URLS
 
-* **Production** - [TBD](TBD)
-* **Development** - [TBD](TBD)
+* **Development** - [Github](https://github.com/ProyectoIntegrador2018/realtime_crowd_insights)
 
 ### Da team
 
@@ -45,6 +45,9 @@ You should ask for access to this tools if you don't have it already:
 * [Documentation](https://drive.google.com/drive/folders/1y1KpT7vFpG4_QRMRK7sWLa76lrSAd-c-)
 
 ## Development
+### Technology stack
+* Swift 5 (Xcode 11 as the IDE)
+* [Azure Face API](https://azure.microsoft.com/en-us/services/cognitive-services/face/)
 
 ### Setup the project
 

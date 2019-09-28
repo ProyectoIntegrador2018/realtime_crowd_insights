@@ -31,13 +31,13 @@ struct ContentView: View {
                     }
                 }
                 .tag(1)
-            Text("Photos")
-            .font(.title)
-            .tabItem {
-                VStack {
-                    Image("photos_icon")
-                    Text("Photos")
-                }
+            PhotosView()
+                .font(.title)
+                .tabItem {
+                    VStack {
+                        Image("photos_icon")
+                        Text("Photos")
+                    }
             }
             .tag(2)
         }
