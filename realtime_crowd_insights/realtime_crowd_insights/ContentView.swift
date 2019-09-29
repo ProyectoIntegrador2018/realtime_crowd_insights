@@ -10,10 +10,12 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var selection = 0
+    @State private var showImagePicker: Bool = true
+    @State private var image: Image? = nil
  
     var body: some View {
-        TabView(selection: $selection){
-            Text("History Tab")
+        TabView {
+            Text(String("History Tab"))
                 .font(.title)
                 .tabItem {
                     VStack {
@@ -22,8 +24,7 @@ struct ContentView: View {
                     }
                 }
                 .tag(0)
-            Text("Camera")
-                .font(.title)
+            PhotoCaptureView(showImagePicker: .constant(false), image: .constant(Image("")))
                 .tabItem {
                     VStack {
                         Image("camera_icon")
@@ -49,3 +50,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
