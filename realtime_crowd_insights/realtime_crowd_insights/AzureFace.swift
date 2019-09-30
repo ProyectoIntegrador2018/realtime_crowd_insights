@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let APIKey = "<bfdf49183ece47dbb44f5595152b6390>"
+let APIKey = "bfdf49183ece47dbb44f5595152b6390"
 let Region = "westcentralus"
 let FindSimilarsUrl = "https://\(Region).api.cognitive.microsoft.com/face/v1.0/findsimilars"
 let DetectUrl = "https://\(Region).api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true"
