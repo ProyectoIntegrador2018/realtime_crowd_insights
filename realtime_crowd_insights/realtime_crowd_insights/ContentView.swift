@@ -14,9 +14,8 @@ struct ContentView: View {
     @State private var image: Image? = nil
  
     var body: some View {
-        TabView {
-            Text(String("History Tab"))
-                .font(.title)
+        TabView(selection: $selection){
+            HistorialView()
                 .tabItem {
                     VStack {
                         Image("history_icon")
@@ -31,6 +30,7 @@ struct ContentView: View {
                         Text("Camera")
                     }
                 }
+
                 .tag(1)
             PhotosView()
                 .font(.title)
