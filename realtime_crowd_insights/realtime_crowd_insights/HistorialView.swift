@@ -13,6 +13,27 @@
 import SwiftUI
 import CoreData
 
+//New view for the detail info of the list
+//To Define a new variable it requieres to change the navigationlink method in the original view
+//The way it takes parameters is by defining new variables like "user_selected"
+struct DetailView: View{
+    //Contains the complete object of the selected User of Core Data from the original view
+    var user_selected = User()
+    
+    var body: some View{
+        VStack{
+            //Displaying all information of the user selected
+            //If it doesnt have the atribute, it displays "Uknown"
+            Text("\(user_selected.name ?? "Uknown")")
+            Text("\(user_selected.visits) visits")
+            Text("\(user_selected.gender ?? "Uknown")")
+            Text("Age: \(user_selected.age)")
+            Text("Emotion: \(user_selected.emotion ?? "Uknown")")
+            Text("Race: \(user_selected.race ?? "Uknown")")
+        }//.navigationBarTitle(Text("\(user_selected.name ?? "Uknown")"))
+    }
+}
+
 struct HistorialView: View {
     
     //To create a new Core Data object, we need to add an @Environment property so we can be in the same context
@@ -57,10 +78,18 @@ struct HistorialView: View {
                 
                 Section(header: Text("Usuarios")){
                     ForEach(list_users, id: \.self){ list_user in
-                        VStack{
-                            Text(list_user.name ?? "Unknown").font(.headline)
-                            Text("\(list_user.age)").font(.subheadline)
+                        //NavigationLink to let the view know that each prototype label is a different view
+                        //We send the complete selected user to the detail view
+                        NavigationLink(destination: DetailView(user_selected: list_user))
+                        {
+                            //Information that displays in the original view
+                            VStack{
+                                //If it doesnt have the atribute, it displays "Uknown"
+                                Text(list_user.name ?? "Unknown").font(.headline)
+                                Text("\(list_user.age)").font(.subheadline)
+                            }
                         }
+                        
                     }
 
                 }
