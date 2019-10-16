@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,7 +20,8 @@
 		24B97E7C23396962001C1893 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B97E7B23396962001C1893 /* Assets.xcassets */; };
 		24B97E7F23396962001C1893 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B97E7E23396962001C1893 /* Preview Assets.xcassets */; };
 		24B97E8223396962001C1893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B97E8023396962001C1893 /* LaunchScreen.storyboard */; };
-		2B1A758E64477FA172F1507C /* Pods_realtime_crowd_insights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D94FDAB0D6896FFA5B81E80 /* Pods_realtime_crowd_insights.framework */; };
+		24ED003B234FCDD6003AC34E /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED003A234FCDD6003AC34E /* ContentManager.swift */; };
+		24ED003E234FCEC0003AC34E /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 24ED003D234FCEBF003AC34E /* Images */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,9 +40,8 @@
 		24B97E7E23396962001C1893 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		24B97E8123396962001C1893 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24B97E8323396962001C1893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		572B0D7D241F65AFA93EF65F /* Pods-realtime_crowd_insights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realtime_crowd_insights.release.xcconfig"; path = "Target Support Files/Pods-realtime_crowd_insights/Pods-realtime_crowd_insights.release.xcconfig"; sourceTree = "<group>"; };
-		808A4A4BB01545735AA9D22C /* Pods-realtime_crowd_insights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realtime_crowd_insights.debug.xcconfig"; path = "Target Support Files/Pods-realtime_crowd_insights/Pods-realtime_crowd_insights.debug.xcconfig"; sourceTree = "<group>"; };
-		9D94FDAB0D6896FFA5B81E80 /* Pods_realtime_crowd_insights.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_realtime_crowd_insights.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24ED003A234FCDD6003AC34E /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		24ED003D234FCEBF003AC34E /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B1A758E64477FA172F1507C /* Pods_realtime_crowd_insights.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,10 +58,9 @@
 		24B97E6623396961001C1893 = {
 			isa = PBXGroup;
 			children = (
+				24ED003D234FCEBF003AC34E /* Images */,
 				24B97E7123396961001C1893 /* realtime_crowd_insights */,
 				24B97E7023396961001C1893 /* Products */,
-				27E68CEB524D6D6D50DF111C /* Pods */,
-				7038B172906867A6E66799DC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -86,6 +84,7 @@
 				24B97E7423396961001C1893 /* SceneDelegate.swift */,
 				24B97E7923396961001C1893 /* ContentView.swift */,
 				244BB4DE233BE10D00E70DA4 /* AzureFace.swift */,
+				24ED003A234FCDD6003AC34E /* ContentManager.swift */,
 				24B97E7B23396962001C1893 /* Assets.xcassets */,
 				24B97E8023396962001C1893 /* LaunchScreen.storyboard */,
 				24B97E8323396962001C1893 /* Info.plist */,
@@ -103,23 +102,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		27E68CEB524D6D6D50DF111C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				808A4A4BB01545735AA9D22C /* Pods-realtime_crowd_insights.debug.xcconfig */,
-				572B0D7D241F65AFA93EF65F /* Pods-realtime_crowd_insights.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		7038B172906867A6E66799DC /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9D94FDAB0D6896FFA5B81E80 /* Pods_realtime_crowd_insights.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -127,11 +109,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24B97E8623396962001C1893 /* Build configuration list for PBXNativeTarget "realtime_crowd_insights" */;
 			buildPhases = (
-				140C6145AA821A403498BD21 /* [CP] Check Pods Manifest.lock */,
 				24B97E6B23396961001C1893 /* Sources */,
 				24B97E6C23396961001C1893 /* Frameworks */,
 				24B97E6D23396961001C1893 /* Resources */,
-				2F8D07E7E032882A3DDBF0AD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -180,6 +160,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				24ED003E234FCEC0003AC34E /* Images in Resources */,
 				24B97E8223396962001C1893 /* LaunchScreen.storyboard in Resources */,
 				24B97E7F23396962001C1893 /* Preview Assets.xcassets in Resources */,
 				24B97E7C23396962001C1893 /* Assets.xcassets in Resources */,
@@ -187,48 +168,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		140C6145AA821A403498BD21 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-realtime_crowd_insights-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2F8D07E7E032882A3DDBF0AD /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-realtime_crowd_insights/Pods-realtime_crowd_insights-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-realtime_crowd_insights/Pods-realtime_crowd_insights-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-realtime_crowd_insights/Pods-realtime_crowd_insights-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		24B97E6B23396961001C1893 /* Sources */ = {
@@ -239,6 +178,7 @@
 				248D2ED9234BD043009FA652 /* HistorialView.swift in Sources */,
 				24B97E7323396961001C1893 /* AppDelegate.swift in Sources */,
 				248D2EDB234BD04B009FA652 /* PhotoCaptureView.swift in Sources */,
+				24ED003B234FCDD6003AC34E /* ContentManager.swift in Sources */,
 				248D2EDD234BD053009FA652 /* PhotosView.swift in Sources */,
 				24B97E7523396961001C1893 /* SceneDelegate.swift in Sources */,
 				248D2EE1234BD0CD009FA652 /* Camera.swift in Sources */,
@@ -378,7 +318,6 @@
 		};
 		24B97E8723396962001C1893 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 808A4A4BB01545735AA9D22C /* Pods-realtime_crowd_insights.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -399,7 +338,6 @@
 		};
 		24B97E8823396962001C1893 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 572B0D7D241F65AFA93EF65F /* Pods-realtime_crowd_insights.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

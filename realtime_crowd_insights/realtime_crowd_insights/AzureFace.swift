@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
-let APIKey = "bfdf49183ece47dbb44f5595152b6390"
-let Region = "westcentralus"
-let FindSimilarsUrl = "https://\(Region).api.cognitive.microsoft.com/face/v1.0/findsimilars"
-let DetectUrl = "https://\(Region).api.cognitive.microsoft.com/face/v1.0/detect?returnFaceId=true"
+let APIKey = "c977b02e81a849e7b260b57d9429124c"
+let Region = "eastusus"
+let FindSimilarsUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/findsimilars"
+let DetectUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/detect?returnFaceId=true&returnFaceAttributes=age,gender,emotion"
 
 class FaceRecognition : NSObject {
     
@@ -65,7 +65,7 @@ class FaceRecognition : NSObject {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-//        Semaforo para hacer el request sincrono
+        // Semaforo para hacer el request sincrono
         let semaphore = DispatchSemaphore(value: 0)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -82,6 +82,7 @@ class FaceRecognition : NSObject {
         task.resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         
+        print(object)
         return object
     }
     

@@ -11,6 +11,8 @@ import UIKit
 import AVFoundation
 import SwiftUI
 
+var globalImage:UIImage? = nil
+
 struct ImagePickerViewController: UIViewControllerRepresentable {
     @Binding var image: UIImage?
 
@@ -41,6 +43,16 @@ struct ImagePickerViewController: UIViewControllerRepresentable {
             let imagePicked = info[.originalImage] as! UIImage
             parent.image = imagePicked
             picker.dismiss(animated: true, completion: nil)
+            globalImage = imagePicked
+            if globalImage != nil
+            {
+                // image has been set
+                ContentManager.shared.load {}
+            }
+            else
+            {
+                print("image has not been set yet")
+            }
         }
     }
 }
