@@ -22,6 +22,8 @@
 		24B97E8223396962001C1893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B97E8023396962001C1893 /* LaunchScreen.storyboard */; };
 		24ED003B234FCDD6003AC34E /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED003A234FCDD6003AC34E /* ContentManager.swift */; };
 		24ED003E234FCEC0003AC34E /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 24ED003D234FCEBF003AC34E /* Images */; };
+		75E49D5D235903DC00DF4759 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E49D5C235903DC00DF4759 /* ApiKeys.swift */; };
+		75E49D5F235904EB00DF4759 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75E49D5E235904EB00DF4759 /* ApiKeys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		24B97E8323396962001C1893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24ED003A234FCDD6003AC34E /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		24ED003D234FCEBF003AC34E /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		75E49D5C235903DC00DF4759 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
+		75E49D5E235904EB00DF4759 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 		24B97E7123396961001C1893 /* realtime_crowd_insights */ = {
 			isa = PBXGroup;
 			children = (
+				75E49D5C235903DC00DF4759 /* ApiKeys.swift */,
 				248D2EE0234BD0CD009FA652 /* Camera.swift */,
 				248D2EDE234BD065009FA652 /* ImagePickerViewController.swift */,
 				248D2EDC234BD053009FA652 /* PhotosView.swift */,
@@ -84,6 +89,7 @@
 				24B97E7423396961001C1893 /* SceneDelegate.swift */,
 				24B97E7923396961001C1893 /* ContentView.swift */,
 				244BB4DE233BE10D00E70DA4 /* AzureFace.swift */,
+				75E49D5E235904EB00DF4759 /* ApiKeys.plist */,
 				24ED003A234FCDD6003AC34E /* ContentManager.swift */,
 				24B97E7B23396962001C1893 /* Assets.xcassets */,
 				24B97E8023396962001C1893 /* LaunchScreen.storyboard */,
@@ -164,6 +170,7 @@
 				24B97E8223396962001C1893 /* LaunchScreen.storyboard in Resources */,
 				24B97E7F23396962001C1893 /* Preview Assets.xcassets in Resources */,
 				24B97E7C23396962001C1893 /* Assets.xcassets in Resources */,
+				75E49D5F235904EB00DF4759 /* ApiKeys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +183,7 @@
 			files = (
 				248D2EDF234BD065009FA652 /* ImagePickerViewController.swift in Sources */,
 				248D2ED9234BD043009FA652 /* HistorialView.swift in Sources */,
+				75E49D5D235903DC00DF4759 /* ApiKeys.swift in Sources */,
 				24B97E7323396961001C1893 /* AppDelegate.swift in Sources */,
 				248D2EDB234BD04B009FA652 /* PhotoCaptureView.swift in Sources */,
 				24ED003B234FCDD6003AC34E /* ContentManager.swift in Sources */,
@@ -322,14 +330,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"realtime_crowd_insights/Preview Content\"";
-				DEVELOPMENT_TEAM = N67E6A6LEZ;
+				DEVELOPMENT_TEAM = 7BU29P6744;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = realtime_crowd_insights/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "miguelbazan.realtime-crowd-insights";
+				PRODUCT_BUNDLE_IDENTIFIER = "miguelbazan.blueborregos.realtime-crowd-insights";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -342,14 +351,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"realtime_crowd_insights/Preview Content\"";
-				DEVELOPMENT_TEAM = N67E6A6LEZ;
+				DEVELOPMENT_TEAM = 7BU29P6744;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = realtime_crowd_insights/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "miguelbazan.realtime-crowd-insights";
+				PRODUCT_BUNDLE_IDENTIFIER = "miguelbazan.blueborregos.realtime-crowd-insights";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

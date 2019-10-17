@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-let APIKey = "c977b02e81a849e7b260b57d9429124c"
+let APIKey = valueForAPIKey(named:"API_SECRET")
 let Region = "eastusus"
 let FindSimilarsUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/findsimilars"
 let DetectUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/detect?returnFaceId=true&returnFaceAttributes=age,gender,emotion"
