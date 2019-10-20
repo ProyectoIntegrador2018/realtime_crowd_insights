@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		244BB4DF233BE10D00E70DA4 /* AzureFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244BB4DE233BE10D00E70DA4 /* AzureFace.swift */; };
 		248D2ED9234BD043009FA652 /* HistorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D2ED8234BD043009FA652 /* HistorialView.swift */; };
-		248D2EDB234BD04B009FA652 /* PhotoCaptureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D2EDA234BD04B009FA652 /* PhotoCaptureView.swift */; };
 		248D2EDD234BD053009FA652 /* PhotosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D2EDC234BD053009FA652 /* PhotosView.swift */; };
-		248D2EDF234BD065009FA652 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D2EDE234BD065009FA652 /* ImagePickerViewController.swift */; };
-		248D2EE1234BD0CD009FA652 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D2EE0234BD0CD009FA652 /* Camera.swift */; };
+		248D2EDF234BD065009FA652 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248D2EDE234BD065009FA652 /* ImageViewController.swift */; };
 		24B97E7323396961001C1893 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B97E7223396961001C1893 /* AppDelegate.swift */; };
 		24B97E7523396961001C1893 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B97E7423396961001C1893 /* SceneDelegate.swift */; };
 		24B97E7823396961001C1893 /* realtime_crowd_insights.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 24B97E7623396961001C1893 /* realtime_crowd_insights.xcdatamodeld */; };
@@ -22,6 +20,7 @@
 		24B97E8223396962001C1893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B97E8023396962001C1893 /* LaunchScreen.storyboard */; };
 		24ED003B234FCDD6003AC34E /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED003A234FCDD6003AC34E /* ContentManager.swift */; };
 		24ED003E234FCEC0003AC34E /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 24ED003D234FCEBF003AC34E /* Images */; };
+		752FC1B4235A99F4006CC599 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752FC1B3235A99F4006CC599 /* CameraView.swift */; };
 		75E49D5D235903DC00DF4759 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E49D5C235903DC00DF4759 /* ApiKeys.swift */; };
 		75E49D5F235904EB00DF4759 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75E49D5E235904EB00DF4759 /* ApiKeys.plist */; };
 /* End PBXBuildFile section */
@@ -29,10 +28,8 @@
 /* Begin PBXFileReference section */
 		244BB4DE233BE10D00E70DA4 /* AzureFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureFace.swift; sourceTree = "<group>"; };
 		248D2ED8234BD043009FA652 /* HistorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorialView.swift; sourceTree = "<group>"; };
-		248D2EDA234BD04B009FA652 /* PhotoCaptureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCaptureView.swift; sourceTree = "<group>"; };
 		248D2EDC234BD053009FA652 /* PhotosView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosView.swift; sourceTree = "<group>"; };
-		248D2EDE234BD065009FA652 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
-		248D2EE0234BD0CD009FA652 /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		248D2EDE234BD065009FA652 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		24B97E6F23396961001C1893 /* realtime_crowd_insights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = realtime_crowd_insights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B97E7223396961001C1893 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24B97E7423396961001C1893 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -44,6 +41,7 @@
 		24B97E8323396962001C1893 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24ED003A234FCDD6003AC34E /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		24ED003D234FCEBF003AC34E /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		752FC1B3235A99F4006CC599 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		75E49D5C235903DC00DF4759 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		75E49D5E235904EB00DF4759 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -80,10 +78,9 @@
 			isa = PBXGroup;
 			children = (
 				75E49D5C235903DC00DF4759 /* ApiKeys.swift */,
-				248D2EE0234BD0CD009FA652 /* Camera.swift */,
-				248D2EDE234BD065009FA652 /* ImagePickerViewController.swift */,
+				248D2EDE234BD065009FA652 /* ImageViewController.swift */,
 				248D2EDC234BD053009FA652 /* PhotosView.swift */,
-				248D2EDA234BD04B009FA652 /* PhotoCaptureView.swift */,
+				752FC1B3235A99F4006CC599 /* CameraView.swift */,
 				248D2ED8234BD043009FA652 /* HistorialView.swift */,
 				24B97E7223396961001C1893 /* AppDelegate.swift */,
 				24B97E7423396961001C1893 /* SceneDelegate.swift */,
@@ -181,15 +178,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				248D2EDF234BD065009FA652 /* ImagePickerViewController.swift in Sources */,
+				248D2EDF234BD065009FA652 /* ImageViewController.swift in Sources */,
 				248D2ED9234BD043009FA652 /* HistorialView.swift in Sources */,
 				75E49D5D235903DC00DF4759 /* ApiKeys.swift in Sources */,
+				752FC1B4235A99F4006CC599 /* CameraView.swift in Sources */,
 				24B97E7323396961001C1893 /* AppDelegate.swift in Sources */,
-				248D2EDB234BD04B009FA652 /* PhotoCaptureView.swift in Sources */,
 				24ED003B234FCDD6003AC34E /* ContentManager.swift in Sources */,
 				248D2EDD234BD053009FA652 /* PhotosView.swift in Sources */,
 				24B97E7523396961001C1893 /* SceneDelegate.swift in Sources */,
-				248D2EE1234BD0CD009FA652 /* Camera.swift in Sources */,
 				24B97E7A23396961001C1893 /* ContentView.swift in Sources */,
 				244BB4DF233BE10D00E70DA4 /* AzureFace.swift in Sources */,
 				24B97E7823396961001C1893 /* realtime_crowd_insights.xcdatamodeld in Sources */,

@@ -1,5 +1,5 @@
 //
-//  ImagePickerViewController.swift
+//  ImageViewController.swift
 //  realtime_crowd_insights
 //
 //  Created by Lorraine Bichara Assad on 9/27/19.
@@ -13,15 +13,23 @@ import SwiftUI
 
 var globalImage:UIImage? = nil
 
-struct ImagePickerViewController: UIViewControllerRepresentable {
+struct ImageViewController: UIViewControllerRepresentable {
     @Binding var image: UIImage?
+    @Binding var imageSourceType: String?
 
-    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePickerViewController>) {
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImageViewController>) {
     }
 
-    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePickerViewController>) -> UIImagePickerController {
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImageViewController>) -> UIImagePickerController {
         let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        if(imageSourceType == "camera")
+        {
+            imagePicker.sourceType = UIImagePickerController.SourceType.camera
+        }
+        else
+        {
+            imagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
+        }
         imagePicker.allowsEditing = false
         imagePicker.delegate = context.coordinator
         return imagePicker
@@ -33,9 +41,9 @@ struct ImagePickerViewController: UIViewControllerRepresentable {
 
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVCapturePhotoCaptureDelegate {
 
-        var parent: ImagePickerViewController
+        var parent: ImageViewController
 
-        init(_ parent: ImagePickerViewController) {
+        init(_ parent: ImageViewController) {
             self.parent = parent
         }
 

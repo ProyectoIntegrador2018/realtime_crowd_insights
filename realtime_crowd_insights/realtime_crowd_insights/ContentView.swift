@@ -23,7 +23,7 @@ struct ContentView: View {
                     }
                 }
                 .tag(0)
-            PhotoCaptureView(showImagePicker: .constant(false), image: .constant(Image("")))
+            CameraView()
                 .tabItem {
                     VStack {
                         Image("camera_icon")

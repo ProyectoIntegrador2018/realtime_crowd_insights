@@ -54,7 +54,7 @@ class ContentManager: NSObject {
     }
     
     private func loadImageDetectFace() -> (Data, UIImage) {
-        let data = globalImage!.pngData()
+        let data = globalImage?.jpegData(compressionQuality: 0.5)
         let image = UIImage.init(data: data!, scale: UIScreen.main.scale)!
 
         return (data!, image)
