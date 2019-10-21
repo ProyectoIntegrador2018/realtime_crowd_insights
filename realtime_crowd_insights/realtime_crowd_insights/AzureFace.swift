@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SwiftyJSON
 
 let APIKey = valueForAPIKey(named:"API_SECRET")
 let Region = "eastusus"
@@ -30,32 +31,33 @@ class FaceRecognition : NSObject {
         return faceIds
     }
     
-    func findSimilars(faceId: String, faceIds: [String], completion: @escaping ([String]) -> Void) {
-        
-        var headers: [String: String] = [:]
-        headers["Content-Type"] = "application/json"
-        headers["Ocp-Apim-Subscription-Key"] = APIKey
-        
-        let params: [String: Any] = [
-            "faceId": faceId,
-            "faceIds": faceIds,
-            "mode": "matchFace"
-        ]
-        
-        let data = try! JSONSerialization.data(withJSONObject: params)
-        
-        DispatchQueue.global(qos: .background).async {
-            let response = self.makePOSTRequest(url: FindSimilarsUrl, postData: data, headers: headers)
-            let faceIds = self.extractFaceIds(fromResponse: response, minConfidence: 0.4)
-            
-            DispatchQueue.main.async {
-                completion(faceIds)
-            }
-        }
-    }
+    //TODO findsimilars
+//    func findSimilars(faceId: String, faceIds: [String], completion: @escaping ([String]) -> Void) {
+//
+//        var headers: [String: String] = [:]
+//        headers["Content-Type"] = "application/json"
+//        headers["Ocp-Apim-Subscription-Key"] = APIKey
+//
+//        let params: [String: Any] = [
+//            "faceId": faceId,
+//            "faceIds": faceIds,
+//            "mode": "matchFace"
+//        ]
+//
+//        let data = try! JSONSerialization.data(withJSONObject: params)
+//
+//        DispatchQueue.global(qos: .background).async {
+//            let response = self.makePOSTRequest(url: FindSimilarsUrl, postData: data, headers: headers)
+//            let faceIds = self.extractFaceIds(fromResponse: response, minConfidence: 0.4)
+//
+//            DispatchQueue.main.async {
+//                completion(faceIds)
+//            }
+//        }
+//    }
     
-    private func makePOSTRequest(url: String, postData: Data, headers: [String: String] = [:]) -> [AnyObject] {
-        var object: [AnyObject] = []
+    private func makePOSTRequest(url: String, postData: Data, headers: [String: String] = [:]) -> JSON {
+        var object:JSON = [:]
         
         var request = URLRequest(url: URL(string: url)!)
         request.httpMethod = "POST"
@@ -69,7 +71,7 @@ class FaceRecognition : NSObject {
         let semaphore = DispatchSemaphore(value: 0)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data, let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject], json != nil {
+            if let data = data, let json = try? JSON(data: data){
                 object = json
             }
             else {
@@ -86,18 +88,21 @@ class FaceRecognition : NSObject {
         return object
     }
     
-    private func extractFaceIds(fromResponse response: [AnyObject], minConfidence: Float? = nil) -> [String] {
+    private func extractFaceIds(fromResponse response: JSON, minConfidence: Float? = nil) -> [String] {
         var faceIds: [String] = []
-        for faceInfo in response {
-            if let faceId = faceInfo["faceId"] as? String  {
-                var canAddFace = true
-                if minConfidence != nil {
-                    let confidence = (faceInfo["confidence"] as! NSNumber).floatValue
-                    canAddFace = confidence >= minConfidence!
-                }
-                if canAddFace { faceIds.append(faceId) }
-            }
-        }
+        print(response)
+        print("faceId: " + response[0]["faceId"].stringValue)
+        print("Age: " + response[0]["faceAttributes"]["age"].stringValue)
+        print("Emotion Disgust: " + response[0]["faceAttributes"]["emotion"]["disgust"].stringValue)
+        print("Emotion Anger: " + response[0]["faceAttributes"]["emotion"]["anger"].stringValue)
+        print("Emotion Sadness: " + response[0]["faceAttributes"]["emotion"]["sadness"].stringValue)
+        print("Emotion Happiness: " + response[0]["faceAttributes"]["emotion"]["happiness"].stringValue)
+        print("Emotion Neutral: " + response[0]["faceAttributes"]["emotion"]["neutral"].stringValue)
+        print("Emotion Contempt: " + response[0]["faceAttributes"]["emotion"]["contempt"].stringValue)
+        print("Emotion Surprise: " + response[0]["faceAttributes"]["emotion"]["surprise"].stringValue)
+        print("Emotion Fear: " + response[0]["faceAttributes"]["emotion"]["fear"].stringValue)
+        print("Gender: " + response[0]["faceAttributes"]["gender"].stringValue)
+        
         return faceIds
     }
 }
