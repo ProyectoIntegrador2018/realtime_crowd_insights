@@ -26,12 +26,14 @@ class FaceRecognition : NSObject {
         headers["Ocp-Apim-Subscription-key"] = APIKey
         
         let response = self.makePOSTRequest(url: DetectUrl, postData: imageData, headers: headers)
-        let faceIds = extractFaceIds(fromResponse: response)
+        printFaceInfo(fromResponse: response)
         
+        //let faceIds = extractFaceIds(fromResponse: response)
+        let faceIds = [String]()
         return faceIds
     }
     
-    //TODO findsimilars
+    // TODO findsimilars
 //    func findSimilars(faceId: String, faceIds: [String], completion: @escaping ([String]) -> Void) {
 //
 //        var headers: [String: String] = [:]
@@ -84,25 +86,41 @@ class FaceRecognition : NSObject {
         task.resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         
-        print(object)
+        //print(object)
         return object
     }
     
-    private func extractFaceIds(fromResponse response: JSON, minConfidence: Float? = nil) -> [String] {
+    private func printFaceInfo(fromResponse response: JSON, minConfidence: Float? = nil) {
+        for i in 0...response.count-1
+        {
+            print("faceId: " + response[i]["faceId"].stringValue)
+            print("Age: " + response[i]["faceAttributes"]["age"].stringValue)
+            print("Emotion Disgust: " + response[i]["faceAttributes"]["emotion"]["disgust"].stringValue)
+            print("Emotion Anger: " + response[i]["faceAttributes"]["emotion"]["anger"].stringValue)
+            print("Emotion Sadness: " + response[i]["faceAttributes"]["emotion"]["sadness"].stringValue)
+            print("Emotion Happiness: " + response[i]["faceAttributes"]["emotion"]["happiness"].stringValue)
+            print("Emotion Neutral: " + response[i]["faceAttributes"]["emotion"]["neutral"].stringValue)
+            print("Emotion Contempt: " + response[i]["faceAttributes"]["emotion"]["contempt"].stringValue)
+            print("Emotion Surprise: " + response[i]["faceAttributes"]["emotion"]["surprise"].stringValue)
+            print("Emotion Fear: " + response[i]["faceAttributes"]["emotion"]["fear"].stringValue)
+            print("Gender: " + response[i]["faceAttributes"]["gender"].stringValue)
+            print("--------------------------------------")
+        }
+    }
+    
+    private func extractFaceIds(fromResponse response: [AnyObject], minConfidence: Float? = nil) -> [String]
+    {
         var faceIds: [String] = []
-        print(response)
-        print("faceId: " + response[0]["faceId"].stringValue)
-        print("Age: " + response[0]["faceAttributes"]["age"].stringValue)
-        print("Emotion Disgust: " + response[0]["faceAttributes"]["emotion"]["disgust"].stringValue)
-        print("Emotion Anger: " + response[0]["faceAttributes"]["emotion"]["anger"].stringValue)
-        print("Emotion Sadness: " + response[0]["faceAttributes"]["emotion"]["sadness"].stringValue)
-        print("Emotion Happiness: " + response[0]["faceAttributes"]["emotion"]["happiness"].stringValue)
-        print("Emotion Neutral: " + response[0]["faceAttributes"]["emotion"]["neutral"].stringValue)
-        print("Emotion Contempt: " + response[0]["faceAttributes"]["emotion"]["contempt"].stringValue)
-        print("Emotion Surprise: " + response[0]["faceAttributes"]["emotion"]["surprise"].stringValue)
-        print("Emotion Fear: " + response[0]["faceAttributes"]["emotion"]["fear"].stringValue)
-        print("Gender: " + response[0]["faceAttributes"]["gender"].stringValue)
-        
+        for faceInfo in response {
+            if let faceId = faceInfo["faceId"] as? String {
+                var canAddFace = true
+                if minConfidence != nil {
+                    let confidence = (faceInfo["confidence"] as! NSNumber).floatValue
+                    canAddFace = confidence >= minConfidence!
+                }
+                if canAddFace { faceIds.append(faceId) }
+            }
+        }
         return faceIds
     }
 }

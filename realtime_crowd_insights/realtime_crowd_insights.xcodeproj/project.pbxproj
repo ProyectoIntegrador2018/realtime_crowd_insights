@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,9 +20,10 @@
 		24B97E8223396962001C1893 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24B97E8023396962001C1893 /* LaunchScreen.storyboard */; };
 		24ED003B234FCDD6003AC34E /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ED003A234FCDD6003AC34E /* ContentManager.swift */; };
 		24ED003E234FCEC0003AC34E /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 24ED003D234FCEBF003AC34E /* Images */; };
-		971F7DF1D3042DD61C7633C3 /* Pods_realtime_crowd_insights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433FFBD78BC94C72C3F0055 /* Pods_realtime_crowd_insights.framework */; };
 		752FC1B4235A99F4006CC599 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 752FC1B3235A99F4006CC599 /* CameraView.swift */; };
+		7559D9752360EC660064DEF9 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7559D9742360EC660064DEF9 /* ApiKeys.plist */; };
 		75E49D5D235903DC00DF4759 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75E49D5C235903DC00DF4759 /* ApiKeys.swift */; };
+		971F7DF1D3042DD61C7633C3 /* Pods_realtime_crowd_insights.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3433FFBD78BC94C72C3F0055 /* Pods_realtime_crowd_insights.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,11 +43,12 @@
 		24ED003A234FCDD6003AC34E /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		24ED003D234FCEBF003AC34E /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
 		3433FFBD78BC94C72C3F0055 /* Pods_realtime_crowd_insights.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_realtime_crowd_insights.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		752FC1B3235A99F4006CC599 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		7559D9742360EC660064DEF9 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ApiKeys.plist; sourceTree = "<group>"; };
+		75E49D5C235903DC00DF4759 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		B150616D953A66E1CE1AA6E4 /* Pods-realtime_crowd_insights.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realtime_crowd_insights.release.xcconfig"; path = "Target Support Files/Pods-realtime_crowd_insights/Pods-realtime_crowd_insights.release.xcconfig"; sourceTree = "<group>"; };
 		E9C910C729FABAB51E502ED6 /* Pods-realtime_crowd_insights.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realtime_crowd_insights.debug.xcconfig"; path = "Target Support Files/Pods-realtime_crowd_insights/Pods-realtime_crowd_insights.debug.xcconfig"; sourceTree = "<group>"; };
 		ECA38B0C235924290007CBFD /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ApiKeys.plist; path = ../../../../Downloads/ApiKeys.plist; sourceTree = "<group>"; };
-		752FC1B3235A99F4006CC599 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		75E49D5C235903DC00DF4759 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				24B97E7923396961001C1893 /* ContentView.swift */,
 				244BB4DE233BE10D00E70DA4 /* AzureFace.swift */,
 				ECA38B0C235924290007CBFD /* ApiKeys.plist */,
+				7559D9742360EC660064DEF9 /* ApiKeys.plist */,
 				24ED003A234FCDD6003AC34E /* ContentManager.swift */,
 				24B97E7B23396962001C1893 /* Assets.xcassets */,
 				24B97E8023396962001C1893 /* LaunchScreen.storyboard */,
@@ -125,7 +128,6 @@
 				E9C910C729FABAB51E502ED6 /* Pods-realtime_crowd_insights.debug.xcconfig */,
 				B150616D953A66E1CE1AA6E4 /* Pods-realtime_crowd_insights.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -193,7 +195,7 @@
 				24B97E8223396962001C1893 /* LaunchScreen.storyboard in Resources */,
 				24B97E7F23396962001C1893 /* Preview Assets.xcassets in Resources */,
 				24B97E7C23396962001C1893 /* Assets.xcassets in Resources */,
-				ECA38B0D235924290007CBFD /* ApiKeys.plist in Resources */,
+				7559D9752360EC660064DEF9 /* ApiKeys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
