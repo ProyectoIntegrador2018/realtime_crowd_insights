@@ -1,0 +1,2 @@
+exclude_patterns:
+  - "realtime_crowd_insights/Pods/SwiftyJSON/Source/SwiftyJSON/"
