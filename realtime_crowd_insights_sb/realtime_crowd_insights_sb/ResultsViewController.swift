@@ -34,7 +34,15 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
         for i in 0...globalAmountOfPeople-1
         {
             let slide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-            slide.imageView.image = globalImage
+
+            let rWidth = Int(globalResponse[i]["rWidth"]!)!
+            let rHeight = Int(globalResponse[i]["rHeight"]!)
+            let rLeft = Int(globalResponse[i]["rLeft"]!)
+            let rTop = Int(globalResponse[i]["rTop"]!)!
+
+            let imgWithRectangle = drawRectangleOnImage(image: globalImage!, w: rWidth, h: rHeight!, l: rLeft!, t: rTop)
+
+            slide.imageView.image = imgWithRectangle
             slide.lbAge.text = globalResponse[i]["age"]
             slide.lbDisgust.text = globalResponse[i]["disgust"]
             slide.lbAnger.text = globalResponse[i]["anger"]
@@ -48,7 +56,6 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
 
             slides.append(slide)
         }
-        
         return slides
     }
     
@@ -61,16 +68,30 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
                slides[i].frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
                scrollView.addSubview(slides[i])
            }
-       }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x/view.frame.width)
+        pageControl.currentPage = Int(pageIndex)
+    }
+
+    func drawRectangleOnImage(image: UIImage, w: Int, h: Int, l: Int, t: Int) -> UIImage {
+        let imageSize = image.size
+        let scale: CGFloat = 0
+        UIGraphicsBeginImageContextWithOptions(imageSize, false, scale)
+
+        image.draw(at: CGPoint.zero)
+
+        let rectangle = CGRect(x: l, y: t, width: w, height: h)
+
+        let context: CGContext = UIGraphicsGetCurrentContext()!
+        context.setLineWidth(8.0)
+        context.setStrokeColor(UIColor.red.cgColor)
+    
+        UIRectFrame(rectangle)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return newImage
+    }
 }

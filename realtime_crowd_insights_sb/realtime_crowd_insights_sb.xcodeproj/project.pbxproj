@@ -10,7 +10,6 @@
 		754EAFA5237A062F00AA7136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFA4237A062F00AA7136 /* AppDelegate.swift */; };
 		754EAFA7237A062F00AA7136 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFA6237A062F00AA7136 /* SceneDelegate.swift */; };
 		754EAFA9237A062F00AA7136 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFA8237A062F00AA7136 /* HistoryViewController.swift */; };
-		754EAFAB237A062F00AA7136 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFAA237A062F00AA7136 /* CameraViewController.swift */; };
 		754EAFAE237A062F00AA7136 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 754EAFAC237A062F00AA7136 /* Main.storyboard */; };
 		754EAFB1237A062F00AA7136 /* realtime_crowd_insights_sb.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFAF237A062F00AA7136 /* realtime_crowd_insights_sb.xcdatamodeld */; };
 		754EAFB3237A063000AA7136 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 754EAFB2237A063000AA7136 /* Assets.xcassets */; };
@@ -18,8 +17,7 @@
 		754EAFC2237A078600AA7136 /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFC1237A078600AA7136 /* ContentManager.swift */; };
 		754EAFC4237A079900AA7136 /* AzureFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFC3237A079900AA7136 /* AzureFace.swift */; };
 		754EAFC6237A07AD00AA7136 /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFC5237A07AD00AA7136 /* ApiKeys.swift */; };
-		754EAFC8237A07C100AA7136 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 754EAFC7237A07C100AA7136 /* ApiKeys.plist */; };
-		754EAFCA237A0E3F00AA7136 /* PhotoLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFC9237A0E3F00AA7136 /* PhotoLibraryViewController.swift */; };
+		754EAFCA237A0E3F00AA7136 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFC9237A0E3F00AA7136 /* ImageViewController.swift */; };
 		7553215B237A405E0071AAA2 /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553215A237A405E0071AAA2 /* Slide.swift */; };
 		7553215E237A40860071AAA2 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7553215D237A40860071AAA2 /* Slide.xib */; };
 		75532160237A41440071AAA2 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553215F237A41440071AAA2 /* ResultsViewController.swift */; };
@@ -34,7 +32,6 @@
 		754EAFA4237A062F00AA7136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		754EAFA6237A062F00AA7136 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		754EAFA8237A062F00AA7136 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		754EAFAA237A062F00AA7136 /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		754EAFAD237A062F00AA7136 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		754EAFB0237A062F00AA7136 /* realtime_crowd_insights_sb.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = realtime_crowd_insights_sb.xcdatamodel; sourceTree = "<group>"; };
 		754EAFB2237A063000AA7136 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -43,8 +40,7 @@
 		754EAFC1237A078600AA7136 /* ContentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
 		754EAFC3237A079900AA7136 /* AzureFace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AzureFace.swift; sourceTree = "<group>"; };
 		754EAFC5237A07AD00AA7136 /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
-		754EAFC7237A07C100AA7136 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ApiKeys.plist; path = ../../../../Downloads/ApiKeys.plist; sourceTree = "<group>"; };
-		754EAFC9237A0E3F00AA7136 /* PhotoLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewController.swift; sourceTree = "<group>"; };
+		754EAFC9237A0E3F00AA7136 /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		7553215A237A405E0071AAA2 /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		7553215D237A40860071AAA2 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		7553215F237A41440071AAA2 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
@@ -84,12 +80,10 @@
 			isa = PBXGroup;
 			children = (
 				7553215A237A405E0071AAA2 /* Slide.swift */,
-				754EAFC7237A07C100AA7136 /* ApiKeys.plist */,
 				754EAFA4237A062F00AA7136 /* AppDelegate.swift */,
 				754EAFA6237A062F00AA7136 /* SceneDelegate.swift */,
 				754EAFA8237A062F00AA7136 /* HistoryViewController.swift */,
-				754EAFAA237A062F00AA7136 /* CameraViewController.swift */,
-				754EAFC9237A0E3F00AA7136 /* PhotoLibraryViewController.swift */,
+				754EAFC9237A0E3F00AA7136 /* ImageViewController.swift */,
 				754EAFC1237A078600AA7136 /* ContentManager.swift */,
 				754EAFC3237A079900AA7136 /* AzureFace.swift */,
 				754EAFC5237A07AD00AA7136 /* ApiKeys.swift */,
@@ -183,7 +177,6 @@
 			files = (
 				7553215E237A40860071AAA2 /* Slide.xib in Resources */,
 				754EAFB6237A063000AA7136 /* LaunchScreen.storyboard in Resources */,
-				754EAFC8237A07C100AA7136 /* ApiKeys.plist in Resources */,
 				754EAFB3237A063000AA7136 /* Assets.xcassets in Resources */,
 				754EAFAE237A062F00AA7136 /* Main.storyboard in Resources */,
 			);
@@ -238,11 +231,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				754EAFAB237A062F00AA7136 /* CameraViewController.swift in Sources */,
 				754EAFA9237A062F00AA7136 /* HistoryViewController.swift in Sources */,
 				7553215B237A405E0071AAA2 /* Slide.swift in Sources */,
 				754EAFB1237A062F00AA7136 /* realtime_crowd_insights_sb.xcdatamodeld in Sources */,
-				754EAFCA237A0E3F00AA7136 /* PhotoLibraryViewController.swift in Sources */,
+				754EAFCA237A0E3F00AA7136 /* ImageViewController.swift in Sources */,
 				754EAFC6237A07AD00AA7136 /* ApiKeys.swift in Sources */,
 				754EAFA5237A062F00AA7136 /* AppDelegate.swift in Sources */,
 				754EAFC2237A078600AA7136 /* ContentManager.swift in Sources */,

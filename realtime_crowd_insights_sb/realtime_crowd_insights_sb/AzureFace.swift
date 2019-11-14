@@ -15,7 +15,6 @@ let Region = "eastusus"
 let FindSimilarsUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/findsimilars"
 let DetectUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/detect?returnFaceId=true&returnFaceAttributes=age,gender,emotion"
 var globalImage:UIImage? = nil
-//var globalResponse: [String: String] = [:]
 var globalResponse: [Dictionary<String, String>] = []
 var globalAmountOfPeople = 0
 
@@ -90,7 +89,6 @@ class FaceRecognition : NSObject {
         task.resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         
-        //print(object)
         return object
     }
     
@@ -111,7 +109,11 @@ class FaceRecognition : NSObject {
                 "contempt": response[i]["faceAttributes"]["emotion"]["contempt"].stringValue,
                 "surprise": response[i]["faceAttributes"]["emotion"]["surprise"].stringValue,
                 "fear": response[i]["faceAttributes"]["emotion"]["fear"].stringValue,
-                "gender": response[i]["faceAttributes"]["gender"].stringValue
+                "gender": response[i]["faceAttributes"]["gender"].stringValue,
+                "rWidth": response[i]["faceRectangle"]["width"].stringValue,
+                "rHeight": response[i]["faceRectangle"]["height"].stringValue,
+                "rLeft": response[i]["faceRectangle"]["left"].stringValue,
+                "rTop": response[i]["faceRectangle"]["top"].stringValue
             ]
             
             globalResponse.append(tempDict)
