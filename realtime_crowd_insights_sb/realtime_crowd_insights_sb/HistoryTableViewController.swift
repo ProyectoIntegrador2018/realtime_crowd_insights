@@ -15,9 +15,9 @@ class HistoryTableViewController: UITableViewController {
     
     override func viewDidLoad() {
 
-//        createData()
         retrieveData()
-        
+        //deleteRecords()
+
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
@@ -64,42 +64,12 @@ class HistoryTableViewController: UITableViewController {
         historyController.age = String(list_user[selectedIndex.row].age)
         historyController.gender = list_user[selectedIndex.row].gender ?? "Uknown"
         historyController.visit = String(list_user[selectedIndex.row].visits)
-        historyController.race = list_user[selectedIndex.row].race ?? "Uknown"
         historyController.emotion = list_user[selectedIndex.row].emotion ?? "Uknown"
         historyController.faceId = list_user[selectedIndex.row].faceId ?? "Uknown"
         
     }
     
     // MARK: - Retrieving Data (Core Data)
-    func createData(){
-        print("Creating")
-        //Inside the AppDelegate we have the container we want to refer to
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-        
-        //Now we create a context from the container
-        let context = appDelegate.persistentContainer.viewContext
-        
-        //Creating new entity for new records
-        let entity = NSEntityDescription.entity(forEntityName: "User", in: context)!
-        
-        //Adding new information (Test)
-        let user = NSManagedObject(entity: entity, insertInto: context)
-        user.setValue(22, forKey: "age")
-        user.setValue("Happy", forKey: "emotion")
-        user.setValue("dIecaF", forKey: "faceId")
-        user.setValue("Male", forKey: "gender")
-        user.setValue("Miguel Rocha", forKey: "name")
-        user.setValue("Latin", forKey: "race")
-        user.setValue(1, forKey: "visits")
-        
-        //Trying to save it inside Core Data
-        do{
-            try context.save()
-        }catch{
-            fatalError("Error while creating data - func createData() 'HistoryTableViewController'")
-        }
-    }
-    
     func retrieveData(){
         print("Retrieving")
         //Inside the AppDelegate we have the container we want to refer to
@@ -125,6 +95,35 @@ class HistoryTableViewController: UITableViewController {
         
     }
     
+    func deleteRecords() -> Void {
+        let moc = getContext()
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+
+         let result = try? moc.fetch(fetchRequest)
+            let resultData = result as! [User]
+
+            for object in resultData {
+                moc.delete(object)
+            }
+
+            do {
+                try moc.save()
+                print("saved!")
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+            } catch {
+
+            }
+
+    }
+
+    // MARK: Get Context
+
+    func getContext () -> NSManagedObjectContext {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        return appDelegate.persistentContainer.viewContext
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

@@ -14,7 +14,6 @@ class HistoryViewController: UIViewController{
     var emotion = String()
     var faceId = String()
     var gender = String()
-    var race = String()
     var visit = String()
     var age = String()
     var slide = History()
@@ -29,7 +28,6 @@ class HistoryViewController: UIViewController{
     @IBOutlet weak var lbGender: UILabel!
     @IBOutlet weak var lbFaceID: UILabel!
     @IBOutlet weak var lbVisits: UILabel!
-    @IBOutlet weak var lbRace: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +37,6 @@ class HistoryViewController: UIViewController{
         lbEmotion.text = emotion
         lbFaceID.text = faceId
         lbGender.text = gender
-        lbRace.text = race
         lbVisits.text = visit
         lbAge.text = age
 //        slide = createSlide()
@@ -53,7 +50,6 @@ class HistoryViewController: UIViewController{
         slide.lbEmotion.text = emotion
         slide.lbFaceID.text = faceId
         slide.lbGender.text = gender
-        slide.lbRace.text = race
         slide.lbVisit.text = visit
         slide.lbAge.text = age
         

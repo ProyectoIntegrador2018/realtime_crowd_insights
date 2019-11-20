@@ -9,6 +9,7 @@
 import UIKit
 
 class Slide: UIView {
+    @IBOutlet var lbAlert: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var lbAge: UILabel!
     @IBOutlet var lbDisgust: UILabel!
@@ -20,4 +21,15 @@ class Slide: UIView {
     @IBOutlet var lbSurprise: UILabel!
     @IBOutlet var lbFear: UILabel!
     @IBOutlet var lbGender: UILabel!
+    
+    @IBOutlet var age: UILabel!
+    @IBOutlet var disgust: UILabel!
+    @IBOutlet var anger: UILabel!
+    @IBOutlet var sadness: UILabel!
+    @IBOutlet var happiness: UILabel!
+    @IBOutlet var neutral: UILabel!
+    @IBOutlet var contempt: UILabel!
+    @IBOutlet var surprise: UILabel!
+    @IBOutlet var fear: UILabel!
+    @IBOutlet var gender: UILabel!
 }

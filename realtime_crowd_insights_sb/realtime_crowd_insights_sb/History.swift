@@ -15,7 +15,5 @@ class History: UIView {
     @IBOutlet var lbEmotion: UILabel!
     @IBOutlet var lbFaceID: UILabel!
     @IBOutlet var lbGender: UILabel!
-    @IBOutlet var lbRace: UILabel!
     @IBOutlet var lbVisit: UILabel!
-    
 }

@@ -157,12 +157,27 @@
                     <rect key="frame" x="27" y="52" width="360" height="400"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wEm-Ih-Eb4">
+                    <rect key="frame" x="27" y="137" width="360" height="346"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="age" destination="ORV-LV-f6q" id="pyk-S1-369"/>
+                <outlet property="anger" destination="dk0-RE-72t" id="BMT-st-W94"/>
+                <outlet property="contempt" destination="kZS-op-ZpL" id="p6x-r5-ms3"/>
+                <outlet property="disgust" destination="rv6-aa-jiD" id="hbn-tc-l7q"/>
+                <outlet property="fear" destination="2br-74-lfQ" id="fKO-C5-ZTH"/>
+                <outlet property="gender" destination="CPY-1p-qDY" id="aqV-qu-d4j"/>
+                <outlet property="happiness" destination="y5a-Bl-ttQ" id="hG3-qb-3Zo"/>
                 <outlet property="imageView" destination="lHB-2Y-ld6" id="nPU-CK-kuq"/>
                 <outlet property="lbAge" destination="Wor-Gn-4gv" id="DiM-zR-z8m"/>
+                <outlet property="lbAlert" destination="wEm-Ih-Eb4" id="gGe-as-uCZ"/>
                 <outlet property="lbAnger" destination="3uG-SF-Owx" id="zyY-0f-3kg"/>
                 <outlet property="lbContempt" destination="y9E-FW-X1c" id="qBz-Nr-qO0"/>
                 <outlet property="lbDisgust" destination="p1q-RY-JM9" id="5zr-Nw-f3P"/>
@@ -172,6 +187,9 @@
                 <outlet property="lbNeutral" destination="6Gg-Gz-BYa" id="HrR-Pr-i2o"/>
                 <outlet property="lbSadness" destination="r26-yM-tvR" id="tKN-Z6-eDT"/>
                 <outlet property="lbSurprise" destination="JJt-pH-hbh" id="5HZ-m5-jTy"/>
+                <outlet property="neutral" destination="Vgu-2p-lcI" id="VDR-7k-Sgt"/>
+                <outlet property="sadness" destination="A2f-F0-CgT" id="6ZM-vp-RkS"/>
+                <outlet property="surprise" destination="iWA-NE-efK" id="Ad9-vz-4vD"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
         </view>
