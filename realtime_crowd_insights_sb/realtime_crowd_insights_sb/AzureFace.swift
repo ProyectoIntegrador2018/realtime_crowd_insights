@@ -17,6 +17,7 @@ let DetectUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/det
 var globalImage:UIImage? = nil
 var globalResponse: [Dictionary<String, String>] = []
 var globalAmountOfPeople = 0
+var globalImageData = Data()
 
 class FaceRecognition : NSObject {
     var globalImage:UIImage? = nil
@@ -30,7 +31,7 @@ class FaceRecognition : NSObject {
         headers["Ocp-Apim-Subscription-key"] = APIKey
         
         let response = self.makePOSTRequest(url: DetectUrl, postData: imageData, headers: headers)
-        printFaceInfo(fromResponse: response)
+        printFaceInfo(fromResponse: response, image: imageData)
         
         //let faceIds = extractFaceIds(fromResponse: response)
         let faceIds = [String]()
@@ -92,7 +93,7 @@ class FaceRecognition : NSObject {
         return object
     }
     
-    private func printFaceInfo(fromResponse response: JSON, minConfidence: Float? = nil) {
+    private func printFaceInfo(fromResponse response: JSON, image: Data, minConfidence: Float? = nil) {
         globalResponse = []
         globalAmountOfPeople = response.count
         
@@ -117,6 +118,7 @@ class FaceRecognition : NSObject {
             ]
             
             globalResponse.append(tempDict)
+            globalImageData = image
         }
     }
     

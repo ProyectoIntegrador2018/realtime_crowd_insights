@@ -19,6 +19,7 @@ class HistoryTableViewController: UITableViewController {
         //deleteRecords()
 
         super.viewDidLoad()
+        self.tableView.reloadData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -26,7 +27,7 @@ class HistoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -45,7 +46,7 @@ class HistoryTableViewController: UITableViewController {
 
         // Configure the cell...
         cell.textLabel?.text = list_user[indexPath.row].name
-        cell.detailTextLabel?.text = String(list_user[indexPath.row].age)
+        cell.detailTextLabel?.text = String(list_user[indexPath.row].visits)
         
 
         return cell
@@ -66,6 +67,10 @@ class HistoryTableViewController: UITableViewController {
         historyController.visit = String(list_user[selectedIndex.row].visits)
         historyController.emotion = list_user[selectedIndex.row].emotion ?? "Uknown"
         historyController.faceId = list_user[selectedIndex.row].faceId ?? "Uknown"
+        print("Image:")
+        print(list_user[selectedIndex.row].image ?? "Uknkown")
+        historyController.image = UIImage(data: list_user[selectedIndex.row].image ?? Data.init()) ?? UIImage.init()
+        
         
     }
     
@@ -92,7 +97,6 @@ class HistoryTableViewController: UITableViewController {
         } catch{
             fatalError("Error while retriving data - func retrieveData() 'HistoryTableViewController'")
         }
-        
     }
     
     func deleteRecords() -> Void {
@@ -114,7 +118,6 @@ class HistoryTableViewController: UITableViewController {
             } catch {
 
             }
-
     }
 
     // MARK: Get Context

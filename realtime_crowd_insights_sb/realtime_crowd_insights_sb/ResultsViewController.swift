@@ -89,7 +89,7 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
                 slide.lbGender.text = globalResponse[i]["gender"]
 
                 slides.append(slide)
-                createData(response: globalResponse[i])
+                createData(response: globalResponse[i], image:globalImageData)
             }
             
             globalAmountOfPeople = 0
@@ -134,7 +134,7 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
     }
 
     // Function that creates a user entity and saves it using Core Data
-    func createData(response: Dictionary<String, String>){
+    func createData(response: Dictionary<String, String>, image: Data){
         // print("Creating data")
         //Inside the AppDelegate we have the container we want to refer to
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
@@ -157,11 +157,36 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
         //Adding new information
         let user = NSManagedObject(entity: entity, insertInto: context)
         user.setValue(Int(response["age"]!), forKey: "age")
-        user.setValue(response["happiness"], forKey: "emotion")
+
+        // Get predominating emotion
+        var emotions = [String: String]()
+        emotions["disgust"] = response["disgust"]
+        emotions["anger"] = response["anger"]
+        emotions["sadness"] = response["sadness"]
+        emotions["happiness"] = response["happiness"]
+        emotions["neutral"] = response["neutral"]
+        emotions["contempt"] = response["contempt"]
+        emotions["surprise"] = response["surprise"]
+        emotions["fear"] = response["fear"]
+
+        var maxEmotion = emotions["disgust"]
+        var predominatingEmotion = ""
+        for emotion in emotions
+        {
+            print(emotion.value)
+            if emotion.value > maxEmotion!
+            {
+                maxEmotion = emotion.value
+                predominatingEmotion = emotion.key
+            }
+        }
+
+        user.setValue(predominatingEmotion, forKey: "emotion")
         user.setValue(response["faceId"], forKey: "faceId")
         user.setValue(response["gender"], forKey: "gender")
         user.setValue("Visitor" + String(count), forKey: "name")
         user.setValue(1, forKey: "visits")
+        user.setValue(image, forKey: "image")
 
         //Trying to save it inside Core Data
         do{
