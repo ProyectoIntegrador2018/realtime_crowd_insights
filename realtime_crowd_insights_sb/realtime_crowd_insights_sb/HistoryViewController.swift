@@ -36,6 +36,5 @@ class HistoryViewController: UIViewController{
         lbVisits.text = visit
         lbAge.text = age
         imageView.image = image
-        
     }
 }

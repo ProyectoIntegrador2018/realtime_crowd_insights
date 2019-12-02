@@ -48,12 +48,10 @@ class HistoryTableViewController: UITableViewController {
         cell.textLabel?.text = list_user[indexPath.row].name
         cell.detailTextLabel?.text = String(list_user[indexPath.row].visits)
         
-
         return cell
     }
 
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -67,8 +65,6 @@ class HistoryTableViewController: UITableViewController {
         historyController.visit = String(list_user[selectedIndex.row].visits)
         historyController.emotion = list_user[selectedIndex.row].emotion ?? "Uknown"
         historyController.faceId = list_user[selectedIndex.row].faceId ?? "Uknown"
-        print("Image:")
-        print(list_user[selectedIndex.row].image ?? "Uknkown")
         historyController.image = UIImage(data: list_user[selectedIndex.row].image ?? Data.init()) ?? UIImage.init()
         
         
@@ -76,7 +72,6 @@ class HistoryTableViewController: UITableViewController {
     
     // MARK: - Retrieving Data (Core Data)
     func retrieveData(){
-        print("Retrieving")
         //Inside the AppDelegate we have the container we want to refer to
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
         
@@ -91,7 +86,6 @@ class HistoryTableViewController: UITableViewController {
             let result = try context.fetch(request)
             for data in result as! [NSManagedObject]{
                 list_user.append(data as! User)
-//                print(data)
             }
             
         } catch{
