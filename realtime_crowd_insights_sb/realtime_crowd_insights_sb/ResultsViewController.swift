@@ -17,9 +17,7 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
     
     var slides:[Slide] = [];
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool)  {
         scrollView.delegate = self
         
         slides = createSlides()
@@ -91,7 +89,7 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
                 slides.append(slide)
                 createData(response: globalResponse[i], image:globalImageData)
             }
-            
+            print(globalResponse)
             globalAmountOfPeople = 0
         }
         return slides
@@ -184,8 +182,9 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
         user.setValue(predominatingEmotion, forKey: "emotion")
         user.setValue(response["faceId"], forKey: "faceId")
         user.setValue(response["gender"], forKey: "gender")
-        user.setValue("Visitor" + String(count), forKey: "name")
+        user.setValue("Visitor " + String(count), forKey: "name")
         user.setValue(1, forKey: "visits")
+        user.setValue(NSDate(), forKey: "createdAt")
         user.setValue(image, forKey: "image")
 
         //Trying to save it inside Core Data

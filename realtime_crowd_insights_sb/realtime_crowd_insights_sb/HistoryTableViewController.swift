@@ -13,14 +13,11 @@ class HistoryTableViewController: UITableViewController {
     
     var list_user = [User]()
     
-    override func viewDidLoad() {
-
+    override func viewWillAppear(_ animated: Bool)  {
+        list_user = []
         retrieveData()
-        //deleteRecords()
-
-        super.viewDidLoad()
         self.tableView.reloadData()
-
+        //deleteRecords()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

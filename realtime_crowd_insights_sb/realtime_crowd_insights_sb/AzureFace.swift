@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 import SwiftyJSON
+import CoreData
 
 let APIKey = valueForAPIKey(named:"API_SECRET")
 let Region = "eastusus"
 let FindSimilarsUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/findsimilars"
 let DetectUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/detect?returnFaceId=true&returnFaceAttributes=age,gender,emotion"
+let addPersonUrl = "https://crowdinsights.cognitiveservices.azure.com/face/v1.0/persongroups/myList/persons"
 var globalImage:UIImage? = nil
 var globalResponse: [Dictionary<String, String>] = []
 var globalAmountOfPeople = 0
@@ -39,28 +41,65 @@ class FaceRecognition : NSObject {
     }
     
     // TODO findsimilars
-//    func findSimilars(faceId: String, faceIds: [String], completion: @escaping ([String]) -> Void) {
-//        var headers: [String: String] = [:]
-//        headers["Content-Type"] = "application/json"
-//        headers["Ocp-Apim-Subscription-Key"] = APIKey
-//
-//        let params: [String: Any] = [
-//            "faceId": faceId,
-//            "faceIds": faceIds,
-//            "mode": "matchFace"
-//        ]
-//
-//        let data = try! JSONSerialization.data(withJSONObject: params)
-//
-//        DispatchQueue.global(qos: .background).async {
-//            let response = self.makePOSTRequest(url: FindSimilarsUrl, postData: data, headers: headers)
-//            let faceIds = self.extractFaceIds(fromResponse: response, minConfidence: 0.4)
-//
-//            DispatchQueue.main.async {
-//                completion(faceIds)
-//            }
-//        }
-//    }
+    func findSimilars(faceId: String, faceIds: [String]) {
+        print(faceId)
+        print(faceIds)
+        var headers: [String: String] = [:]
+        headers["Content-Type"] = "application/json"
+        headers["Ocp-Apim-Subscription-Key"] = APIKey
+
+        let params: [String: Any] = [
+            "faceId": faceId,
+            "faceIds": faceIds,
+            "mode": "matchFace"
+        ]
+
+        let data = try! JSONSerialization.data(withJSONObject: params)
+
+        DispatchQueue.global(qos: .background).async {
+            let responseSimilar = self.makePOSTRequest(url: FindSimilarsUrl, postData: data, headers: headers)
+            print(responseSimilar.count)
+            if(responseSimilar.count > 0 ){
+                guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+
+                let context = appDelegate.persistentContainer.viewContext
+                let fetchtRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+                fetchtRequest.predicate = NSPredicate(format: "faceId == %@", faceId)
+                do {
+                    var userList = try context.fetch(fetchtRequest) as! [User]
+                    print(userList)
+                    if let userUpdate = userList.first {
+                        print("update")
+                        print(userUpdate)
+                        userUpdate.visits = Int64(responseSimilar.count)
+                     }
+                     try context.save()
+                }
+                catch {
+                    print("error executing fetch request: \(error)")
+                }
+            }
+        }
+        
+    }
+    
+    func addPersonToAzureGroup(faceId: String){
+        var headers: [String: String] = [:]
+        headers["Content-Type"] = "application/json"
+        headers["Ocp-Apim-Subscription-Key"] = APIKey
+
+        let params: [String: Any] = [
+            "personGroupId": 1,
+            "personId": faceId,
+        ]
+
+        let data = try! JSONSerialization.data(withJSONObject: params)
+
+        DispatchQueue.global(qos: .background).async {
+            let responseAdd = self.makePOSTRequest(url: addPersonUrl + faceId + "/", postData: data, headers: headers)
+            print(responseAdd)
+        }
+    }
     
     private func makePOSTRequest(url: String, postData: Data, headers: [String: String] = [:]) -> JSON {
         var object:JSON = [:]
@@ -97,6 +136,31 @@ class FaceRecognition : NSObject {
         globalResponse = []
         globalAmountOfPeople = response.count
         
+        var faceIdsInCoreData = [String]()
+
+        //Inside the AppDelegate we have the container we want to refer to
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+
+        //Now we create a context from the container
+        let context = appDelegate.persistentContainer.viewContext
+
+        //We prepare the fetch request
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+
+        do {
+            let calendar = Calendar.current
+            let users = try context.fetch(request)
+            for user in users {
+                if (calendar.isDateInToday((user as AnyObject).createdAt ?? (NSDate.distantPast as NSDate) as Date)){
+                    faceIdsInCoreData.append((user as AnyObject).faceId!)
+                }
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        print(globalAmountOfPeople)
+        
         for i in 0...globalAmountOfPeople-1
         {
             let tempDict = [
@@ -116,7 +180,13 @@ class FaceRecognition : NSObject {
                 "rLeft": response[i]["faceRectangle"]["left"].stringValue,
                 "rTop": response[i]["faceRectangle"]["top"].stringValue
             ]
-            
+            print(response)
+            //Wait for current ID to be saved on db, so find similars can find a person again.
+            let secondsToDelay = 30.0
+            DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
+               let findSimilarsss = FaceRecognition.shared.findSimilars(faceId:response[i]["faceId"].stringValue,faceIds:faceIdsInCoreData )
+            }
+
             globalResponse.append(tempDict)
             globalImageData = image
         }
