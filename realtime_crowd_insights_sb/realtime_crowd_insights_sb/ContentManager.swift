@@ -70,9 +70,6 @@ class ContentManager: NSObject {
                 filteredPhotos.append(photo)
             }
         }
-        
         return filteredPhotos
     }
-    
 }
-

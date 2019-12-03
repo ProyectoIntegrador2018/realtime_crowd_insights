@@ -2,7 +2,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/da71592131fb15bceb70/maintainability)](https://codeclimate.com/github/ProyectoIntegrador2018/realtime_crowd_insights/maintainability)
 
-Mobile application (IOS) to obtain demographic information of the analysis of people in images, Facial Recognition.
+Mobile application (IOS) to obtain demographic information of the analysis of people in images using Azure's facial recognition API.
 
 ## Table of contents
 
@@ -20,7 +20,7 @@ Mobile application (IOS) to obtain demographic information of the analysis of pe
 
 | Name               | Email             | Role |
 | ------------------ | ----------------- | ---- |
-| Aldo Lares | alares@bluepeople.com | Cliente  |
+| Aldo Lares | alares@bluepeople.com | Sales Analysis Manager  |
 
 
 ### Environment URLS
@@ -31,10 +31,10 @@ Mobile application (IOS) to obtain demographic information of the analysis of pe
 
 | Name           | Email             | Role        |
 | -------------- | ----------------- | ----------- |
-| Lorraine Bichara Assad | A01193063@itesm.mx | Development/ Product Owner Proxy |
-| Mauricio Juan Garcia Amaya | A01193289@itesm.mx | Development/ Administrador del Proyecto |
-| Miguel Bazán Aviña | A01281010@itesm.mx | Development/ Scrum Master |
-| Miguel Angel Rocha Cabello | A01281368@itesm.mx | Development/ Administrador de Configuración |
+| Lorraine Bichara Assad | A01193063@itesm.mx | Development / Product Owner Proxy |
+| Mauricio Juan Garcia Amaya | A01193289@itesm.mx | Development / Administrador del Proyecto |
+| Miguel Bazán Aviña | A01281010@itesm.mx | Development / Scrum Master |
+| Miguel Angel Rocha Cabello | A01281368@itesm.mx | Development / Administrador de Configuración |
 
 ### Management tools
 

@@ -34,13 +34,11 @@ class FaceRecognition : NSObject {
         
         let response = self.makePOSTRequest(url: DetectUrl, postData: imageData, headers: headers)
         printFaceInfo(fromResponse: response, image: imageData)
-        
-        //let faceIds = extractFaceIds(fromResponse: response)
+
         let faceIds = [String]()
         return faceIds
     }
-    
-    // TODO findsimilars
+
     func findSimilars(faceId: String, faceIds: [String]) {
         var headers: [String: String] = [:]
         headers["Content-Type"] = "application/json"
@@ -96,7 +94,6 @@ class FaceRecognition : NSObject {
                 }
             }
         }
-        
     }
     
     func addPersonToAzureGroup(faceId: String){
@@ -127,7 +124,7 @@ class FaceRecognition : NSObject {
             request.addValue(header.value, forHTTPHeaderField: header.key)
         }
         
-        // Semaforo para hacer el request sincrono
+        // Semaphore to make synchronous request
         let semaphore = DispatchSemaphore(value: 0)
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -195,11 +192,11 @@ class FaceRecognition : NSObject {
                 "rLeft": response[i]["faceRectangle"]["left"].stringValue,
                 "rTop": response[i]["faceRectangle"]["top"].stringValue
             ]
-            print(response)
+
             //Wait for current ID to be saved on db, so find similars can find a person again.
             let secondsToDelay = 30.0
             DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
-               let findSimilarsss = FaceRecognition.shared.findSimilars(faceId:response[i]["faceId"].stringValue,faceIds:faceIdsInCoreData )
+               let findSimilars = FaceRecognition.shared.findSimilars(faceId:response[i]["faceId"].stringValue,faceIds:faceIdsInCoreData )
             }
 
             globalResponse.append(tempDict)

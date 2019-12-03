@@ -28,37 +28,41 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
         view.bringSubviewToFront(pageControl)
     }
     
+    func handleAzureError() -> Slide {
+        let slide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
+        
+        slide.lbAlert.text = "Cannot connect to Azure. Please try again later."
+        slide.lbAge.text = ""
+        slide.lbDisgust.text = ""
+        slide.lbAnger.text = ""
+        slide.lbSadness.text = ""
+        slide.lbHappiness.text = ""
+        slide.lbNeutral.text = ""
+        slide.lbContempt.text = ""
+        slide.lbSurprise.text = ""
+        slide.lbFear.text = ""
+        slide.lbGender.text = ""
+        
+        slide.age.text = ""
+        slide.disgust.text = ""
+        slide.anger.text = ""
+        slide.sadness.text = ""
+        slide.happiness.text = ""
+        slide.neutral.text = ""
+        slide.contempt.text = ""
+        slide.surprise.text = ""
+        slide.fear.text = ""
+        slide.gender.text = ""
+        
+        return slide
+    }
+    
     func createSlides() -> [Slide] {
         slides = [] // to reset array of slides
         if(globalAmountOfPeople <= 0)
         {
             
-            let slide:Slide = Bundle.main.loadNibNamed("Slide", owner: self, options: nil)?.first as! Slide
-            
-            slide.lbAlert.text = "Cannot connect to Azure. Please try again later."
-            slide.lbAge.text = ""
-            slide.lbDisgust.text = ""
-            slide.lbAnger.text = ""
-            slide.lbSadness.text = ""
-            slide.lbHappiness.text = ""
-            slide.lbNeutral.text = ""
-            slide.lbContempt.text = ""
-            slide.lbSurprise.text = ""
-            slide.lbFear.text = ""
-            slide.lbGender.text = ""
-            
-            slide.age.text = ""
-            slide.disgust.text = ""
-            slide.anger.text = ""
-            slide.sadness.text = ""
-            slide.happiness.text = ""
-            slide.neutral.text = ""
-            slide.contempt.text = ""
-            slide.surprise.text = ""
-            slide.fear.text = ""
-            slide.gender.text = ""
-            print("Cannot connect to Azure. Please try again later.")
-            
+            let slide = handleAzureError()
             slides.append(slide)
         }
         else
@@ -89,7 +93,6 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
                 slides.append(slide)
                 createData(response: globalResponse[i], image:globalImageData)
             }
-            print(globalResponse)
             globalAmountOfPeople = 0
         }
         return slides
@@ -131,9 +134,34 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
         return newImage
     }
 
+    // Get predominating emotion
+    func getPredominatingEmotion(response: Dictionary<String, String>) -> String {
+        var emotions = [String: String]()
+        emotions["disgust"] = response["disgust"]
+        emotions["anger"] = response["anger"]
+        emotions["sadness"] = response["sadness"]
+        emotions["happiness"] = response["happiness"]
+        emotions["neutral"] = response["neutral"]
+        emotions["contempt"] = response["contempt"]
+        emotions["surprise"] = response["surprise"]
+        emotions["fear"] = response["fear"]
+
+        var maxEmotion = emotions["disgust"]
+        var predominatingEmotion = ""
+        for emotion in emotions
+        {
+            if emotion.value > maxEmotion!
+            {
+                maxEmotion = emotion.value
+                predominatingEmotion = emotion.key
+            }
+        }
+
+        return predominatingEmotion
+    }
+
     // Function that creates a user entity and saves it using Core Data
-    func createData(response: Dictionary<String, String>, image: Data){
-        // print("Creating data")
+    func createData(response: Dictionary<String, String>, image: Data) {
         //Inside the AppDelegate we have the container we want to refer to
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
 
@@ -153,43 +181,22 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
             print("Error")
         }
 
-        //Adding new information
+        // Adding new information
         let user = NSManagedObject(entity: entity, insertInto: context)
         user.setValue(Int(response["age"]!), forKey: "age")
 
-        // Get predominating emotion
-        var emotions = [String: String]()
-        emotions["disgust"] = response["disgust"]
-        emotions["anger"] = response["anger"]
-        emotions["sadness"] = response["sadness"]
-        emotions["happiness"] = response["happiness"]
-        emotions["neutral"] = response["neutral"]
-        emotions["contempt"] = response["contempt"]
-        emotions["surprise"] = response["surprise"]
-        emotions["fear"] = response["fear"]
-
-        var maxEmotion = emotions["disgust"]
-        var predominatingEmotion = ""
-        for emotion in emotions
-        {
-            print(emotion.value)
-            if emotion.value > maxEmotion!
-            {
-                maxEmotion = emotion.value
-                predominatingEmotion = emotion.key
-            }
-        }
+        let predominatingEmotion = getPredominatingEmotion(response: response)
 
         user.setValue(predominatingEmotion, forKey: "emotion")
         user.setValue(response["faceId"], forKey: "faceId")
         user.setValue(response["gender"], forKey: "gender")
         user.setValue("Visitor " + String(count), forKey: "name")
         user.setValue(1, forKey: "visits")
-         user.setValue(true, forKey: "isActive")
+        user.setValue(true, forKey: "isActive")
         user.setValue(NSDate(), forKey: "createdAt")
         user.setValue(image, forKey: "image")
 
-        //Trying to save it inside Core Data
+        // Trying to save it inside Core Data
         do{
             try context.save()
         }catch{
