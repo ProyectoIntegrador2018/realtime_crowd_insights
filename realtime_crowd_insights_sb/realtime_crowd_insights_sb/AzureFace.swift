@@ -42,8 +42,6 @@ class FaceRecognition : NSObject {
     
     // TODO findsimilars
     func findSimilars(faceId: String, faceIds: [String]) {
-        print(faceId)
-        print(faceIds)
         var headers: [String: String] = [:]
         headers["Content-Type"] = "application/json"
         headers["Ocp-Apim-Subscription-Key"] = APIKey
@@ -51,27 +49,45 @@ class FaceRecognition : NSObject {
         let params: [String: Any] = [
             "faceId": faceId,
             "faceIds": faceIds,
-            "mode": "matchFace"
         ]
 
         let data = try! JSONSerialization.data(withJSONObject: params)
 
         DispatchQueue.global(qos: .background).async {
             let responseSimilar = self.makePOSTRequest(url: FindSimilarsUrl, postData: data, headers: headers)
-            print(responseSimilar.count)
             if(responseSimilar.count > 0 ){
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
 
+                for (_, id) in responseSimilar{
+                    let context = appDelegate.persistentContainer.viewContext
+                    let fetchtRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+
+                    fetchtRequest.predicate = NSPredicate(format: "faceId == %@", (id["faceId"].stringValue) as String)
+                    do {
+                        let userList = try context.fetch(fetchtRequest) as! [User]
+
+                        if let userUpdate = userList.first {
+                            print(userUpdate.faceId!)
+                            userUpdate.setValue(false, forKey: "isActive")
+
+                         }
+                        try context.save()
+                    }
+                    catch {
+                        print("error executing delete request: \(error)")
+                    }
+                }
                 let context = appDelegate.persistentContainer.viewContext
                 let fetchtRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+                
                 fetchtRequest.predicate = NSPredicate(format: "faceId == %@", faceId)
                 do {
-                    var userList = try context.fetch(fetchtRequest) as! [User]
-                    print(userList)
+                    let userList = try context.fetch(fetchtRequest) as! [User]
+
                     if let userUpdate = userList.first {
-                        print("update")
-                        print(userUpdate)
+
                         userUpdate.visits = Int64(responseSimilar.count)
+                         userUpdate.isActive = true
                      }
                      try context.save()
                 }
@@ -97,7 +113,6 @@ class FaceRecognition : NSObject {
 
         DispatchQueue.global(qos: .background).async {
             let responseAdd = self.makePOSTRequest(url: addPersonUrl + faceId + "/", postData: data, headers: headers)
-            print(responseAdd)
         }
     }
     

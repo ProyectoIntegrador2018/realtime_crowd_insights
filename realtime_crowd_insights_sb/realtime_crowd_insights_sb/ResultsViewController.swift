@@ -147,6 +147,7 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
         var count = 0
         do {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+            fetchRequest.predicate = NSPredicate(format: "isActive == true")
             count = try context.count(for: fetchRequest)
         } catch {
             print("Error")
@@ -184,6 +185,7 @@ class ResultsViewController: UIViewController, UIScrollViewDelegate {
         user.setValue(response["gender"], forKey: "gender")
         user.setValue("Visitor " + String(count), forKey: "name")
         user.setValue(1, forKey: "visits")
+         user.setValue(true, forKey: "isActive")
         user.setValue(NSDate(), forKey: "createdAt")
         user.setValue(image, forKey: "image")
 

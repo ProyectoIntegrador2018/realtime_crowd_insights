@@ -81,8 +81,10 @@ class HistoryTableViewController: UITableViewController {
         //Trying to fetch data
         do{
             let result = try context.fetch(request)
-            for data in result as! [NSManagedObject]{
-                list_user.append(data as! User)
+            for data in result as! [User]{
+                if(data.isActive != false){
+                    list_user.append(data)
+                }
             }
             
         } catch{

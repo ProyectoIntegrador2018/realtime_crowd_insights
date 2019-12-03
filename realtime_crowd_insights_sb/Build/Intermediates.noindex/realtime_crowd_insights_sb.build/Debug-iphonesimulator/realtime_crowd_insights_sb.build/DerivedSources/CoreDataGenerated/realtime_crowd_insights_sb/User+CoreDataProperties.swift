@@ -22,6 +22,8 @@ extension User {
     @NSManaged public var emotion: String?
     @NSManaged public var faceId: String?
     @NSManaged public var gender: String?
+    @NSManaged public var image: Data?
+    @NSManaged public var isActive: Bool
     @NSManaged public var name: String?
     @NSManaged public var visits: Int64
 
