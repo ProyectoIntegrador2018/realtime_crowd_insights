@@ -71,6 +71,20 @@ After installing, clone the repository into your machine:
 $ git clone https://github.com/ProyectoIntegrador2018/realtime_crowd_insights.git
 ```
 
+4. Azure's API requires an API key. This is a secret key that can be obtained from Azure's portal.
+Create a file called ApiKeys.plist with the following content:
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_SECRET</key>
+	<string>YOUR-API-KEY-HERE</string>
+</dict>
+</plist>
+```
+Add this file to your local folder at the same level where the ApiKeys.swift file is located, and inside Xcode, go to File > Add files to "realtime_crowd_insights_sb" and select the file to add it to the project. Make sure this file doesn't get added to the repo, or the keys will have to be restored.
+
 ### Running project for Desktop Simulation
 
 1. Fire up the project from the downloaded folder
