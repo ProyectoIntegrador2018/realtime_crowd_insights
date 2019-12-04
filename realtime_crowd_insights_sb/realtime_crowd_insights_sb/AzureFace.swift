@@ -170,6 +170,7 @@ class FaceRecognition : NSObject {
     }
     
     private func printFaceInfo(fromResponse response: JSON, image: Data, minConfidence: Float? = nil) {
+        globalResponse = []
         globalAmountOfPeople = response.count
         
         var faceIdsInCoreData = [String]()
