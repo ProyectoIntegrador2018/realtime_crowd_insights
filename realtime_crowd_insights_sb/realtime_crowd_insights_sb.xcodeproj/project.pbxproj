@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7536F099238B8A2D00C5ECE6 /* proximanova-regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7536F098238B8A2B00C5ECE6 /* proximanova-regular.otf */; };
-		7536F09E238C833600C5ECE6 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7536F09D238C833600C5ECE6 /* RoundButton.swift */; };
 		754EAFA5237A062F00AA7136 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFA4237A062F00AA7136 /* AppDelegate.swift */; };
 		754EAFA7237A062F00AA7136 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFA6237A062F00AA7136 /* SceneDelegate.swift */; };
 		754EAFA9237A062F00AA7136 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 754EAFA8237A062F00AA7136 /* HistoryViewController.swift */; };
@@ -24,10 +23,8 @@
 		7553215E237A40860071AAA2 /* Slide.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7553215D237A40860071AAA2 /* Slide.xib */; };
 		75532160237A41440071AAA2 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7553215F237A41440071AAA2 /* ResultsViewController.swift */; };
 		759628F42384A91D002C48D5 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759628F12384A91C002C48D5 /* HistoryTableViewController.swift */; };
-		759628F52384A91D002C48D5 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 759628F22384A91C002C48D5 /* History.swift */; };
-		759628F62384A91D002C48D5 /* HistoryResult.xib in Resources */ = {isa = PBXBuildFile; fileRef = 759628F32384A91D002C48D5 /* HistoryResult.xib */; };
-		759628F82384A97B002C48D5 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 759628F72384A97B002C48D5 /* ApiKeys.plist */; };
 		875B1808B2B36116528A3881 /* Pods_realtime_crowd_insights_sb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CA7591AB8604E01EFF744AB /* Pods_realtime_crowd_insights_sb.framework */; };
+		EC1A194A239734B90034CFB0 /* ApiKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = EC1A1949239734B90034CFB0 /* ApiKeys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +33,6 @@
 		72373DAD3E95C42E317A0DD8 /* Pods-realtime_crowd_insights_sb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-realtime_crowd_insights_sb.release.xcconfig"; path = "Target Support Files/Pods-realtime_crowd_insights_sb/Pods-realtime_crowd_insights_sb.release.xcconfig"; sourceTree = "<group>"; };
 		7536F098238B8A2B00C5ECE6 /* proximanova-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "proximanova-regular.otf"; sourceTree = "<group>"; };
 		7536F09A238B8C1C00C5ECE6 /* proximanova-regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "proximanova-regular.otf"; path = "realtime_crowd_insights_sb/proximanova-regular.otf"; sourceTree = "<group>"; };
-		7536F09D238C833600C5ECE6 /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RoundButton.swift; path = ../../../realtime_crowd_insights_sb/realtime_crowd_insights_sb/RoundButton.swift; sourceTree = "<group>"; };
 		754EAFA1237A062F00AA7136 /* realtime_crowd_insights_sb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = realtime_crowd_insights_sb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		754EAFA4237A062F00AA7136 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		754EAFA6237A062F00AA7136 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,9 +50,7 @@
 		7553215D237A40860071AAA2 /* Slide.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Slide.xib; sourceTree = "<group>"; };
 		7553215F237A41440071AAA2 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		759628F12384A91C002C48D5 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
-		759628F22384A91C002C48D5 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
-		759628F32384A91D002C48D5 /* HistoryResult.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryResult.xib; sourceTree = "<group>"; };
-		759628F72384A97B002C48D5 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ApiKeys.plist; path = ../../../../../Desktop/ApiKeys.plist; sourceTree = "<group>"; };
+		EC1A1949239734B90034CFB0 /* ApiKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = ApiKeys.plist; path = ../../../../Downloads/ApiKeys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,21 +87,18 @@
 		754EAFA3237A062F00AA7136 /* realtime_crowd_insights_sb */ = {
 			isa = PBXGroup;
 			children = (
+				EC1A1949239734B90034CFB0 /* ApiKeys.plist */,
 				7536F098238B8A2B00C5ECE6 /* proximanova-regular.otf */,
-				759628F72384A97B002C48D5 /* ApiKeys.plist */,
 				754EAFC5237A07AD00AA7136 /* ApiKeys.swift */,
 				754EAFA4237A062F00AA7136 /* AppDelegate.swift */,
 				754EAFC3237A079900AA7136 /* AzureFace.swift */,
 				754EAFA8237A062F00AA7136 /* HistoryViewController.swift */,
-				759628F22384A91C002C48D5 /* History.swift */,
-				759628F32384A91D002C48D5 /* HistoryResult.xib */,
 				759628F12384A91C002C48D5 /* HistoryTableViewController.swift */,
 				754EAFC9237A0E3F00AA7136 /* ImageViewController.swift */,
 				754EAFB4237A063000AA7136 /* LaunchScreen.storyboard */,
 				754EAFC1237A078600AA7136 /* ContentManager.swift */,
 				754EAFAC237A062F00AA7136 /* Main.storyboard */,
 				7553215F237A41440071AAA2 /* ResultsViewController.swift */,
-				7536F09D238C833600C5ECE6 /* RoundButton.swift */,
 				7553215D237A40860071AAA2 /* Slide.xib */,
 				7553215A237A405E0071AAA2 /* Slide.swift */,
 				754EAFA6237A062F00AA7136 /* SceneDelegate.swift */,
@@ -195,13 +186,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EC1A194A239734B90034CFB0 /* ApiKeys.plist in Resources */,
 				7536F099238B8A2D00C5ECE6 /* proximanova-regular.otf in Resources */,
 				7553215E237A40860071AAA2 /* Slide.xib in Resources */,
 				754EAFB6237A063000AA7136 /* LaunchScreen.storyboard in Resources */,
-				759628F62384A91D002C48D5 /* HistoryResult.xib in Resources */,
 				754EAFB3237A063000AA7136 /* Assets.xcassets in Resources */,
 				754EAFAE237A062F00AA7136 /* Main.storyboard in Resources */,
-				759628F82384A97B002C48D5 /* ApiKeys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,8 +250,6 @@
 				754EAFCA237A0E3F00AA7136 /* ImageViewController.swift in Sources */,
 				754EAFC6237A07AD00AA7136 /* ApiKeys.swift in Sources */,
 				754EAFA5237A062F00AA7136 /* AppDelegate.swift in Sources */,
-				7536F09E238C833600C5ECE6 /* RoundButton.swift in Sources */,
-				759628F52384A91D002C48D5 /* History.swift in Sources */,
 				754EAFC2237A078600AA7136 /* ContentManager.swift in Sources */,
 				754EAFC4237A079900AA7136 /* AzureFace.swift in Sources */,
 				759628F42384A91D002C48D5 /* HistoryTableViewController.swift in Sources */,

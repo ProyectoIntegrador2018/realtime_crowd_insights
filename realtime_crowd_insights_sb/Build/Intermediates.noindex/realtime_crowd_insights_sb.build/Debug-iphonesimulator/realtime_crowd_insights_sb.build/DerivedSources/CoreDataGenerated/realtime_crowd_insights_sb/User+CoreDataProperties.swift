@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  
 //
-//  Created by Mauricio Garza on 12/2/19.
+//  Created by Mauricio Garza on 12/3/19.
 //
 //  This file was automatically generated and should not be edited.
 //

@@ -38,6 +38,29 @@ class FaceRecognition : NSObject {
         let faceIds = [String]()
         return faceIds
     }
+    
+    func removePastInsertions(responseSimilar: JSON){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        for (_, id) in responseSimilar{
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchtRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+
+            fetchtRequest.predicate = NSPredicate(format: "faceId == %@", (id["faceId"].stringValue) as String)
+            do {
+                let userList = try context.fetch(fetchtRequest) as! [User]
+
+                if let userUpdate = userList.first {
+                    print(userUpdate.faceId!)
+                    userUpdate.setValue(false, forKey: "isActive")
+
+                 }
+                try context.save()
+            }
+            catch {
+                print("error executing delete request: \(error)")
+            }
+        }
+    }
 
     func findSimilars(faceId: String, faceIds: [String]) {
         var headers: [String: String] = [:]
@@ -54,27 +77,8 @@ class FaceRecognition : NSObject {
         DispatchQueue.global(qos: .background).async {
             let responseSimilar = self.makePOSTRequest(url: FindSimilarsUrl, postData: data, headers: headers)
             if(responseSimilar.count > 0 ){
+                self.removePastInsertions(responseSimilar: responseSimilar)
                 guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
-
-                for (_, id) in responseSimilar{
-                    let context = appDelegate.persistentContainer.viewContext
-                    let fetchtRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-
-                    fetchtRequest.predicate = NSPredicate(format: "faceId == %@", (id["faceId"].stringValue) as String)
-                    do {
-                        let userList = try context.fetch(fetchtRequest) as! [User]
-
-                        if let userUpdate = userList.first {
-                            print(userUpdate.faceId!)
-                            userUpdate.setValue(false, forKey: "isActive")
-
-                         }
-                        try context.save()
-                    }
-                    catch {
-                        print("error executing delete request: \(error)")
-                    }
-                }
                 let context = appDelegate.persistentContainer.viewContext
                 let fetchtRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
                 
@@ -144,14 +148,34 @@ class FaceRecognition : NSObject {
         return object
     }
     
+    func updateGlobalResponse(response: JSON){
+        let tempDict = [
+            "faceId": response["faceId"].stringValue,
+            "age": response["faceAttributes"]["age"].stringValue,
+            "disgust": response["faceAttributes"]["emotion"]["disgust"].stringValue,
+            "anger": response["faceAttributes"]["emotion"]["anger"].stringValue,
+            "sadness": response["faceAttributes"]["emotion"]["sadness"].stringValue,
+            "happiness": response["faceAttributes"]["emotion"]["happiness"].stringValue,
+            "neutral": response["faceAttributes"]["emotion"]["neutral"].stringValue,
+            "contempt": response["faceAttributes"]["emotion"]["contempt"].stringValue,
+            "surprise": response["faceAttributes"]["emotion"]["surprise"].stringValue,
+            "fear": response["faceAttributes"]["emotion"]["fear"].stringValue,
+            "gender": response["faceAttributes"]["gender"].stringValue,
+            "rWidth": response["faceRectangle"]["width"].stringValue,
+            "rHeight": response["faceRectangle"]["height"].stringValue,
+            "rLeft": response["faceRectangle"]["left"].stringValue,
+            "rTop": response["faceRectangle"]["top"].stringValue
+        ]
+        globalResponse.append(tempDict)
+    }
+    
     private func printFaceInfo(fromResponse response: JSON, image: Data, minConfidence: Float? = nil) {
-        globalResponse = []
         globalAmountOfPeople = response.count
         
         var faceIdsInCoreData = [String]()
 
         //Inside the AppDelegate we have the container we want to refer to
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {return}
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
         //Now we create a context from the container
         let context = appDelegate.persistentContainer.viewContext
@@ -171,35 +195,15 @@ class FaceRecognition : NSObject {
             print(error.localizedDescription)
         }
         
-        print(globalAmountOfPeople)
-        
         for i in 0...globalAmountOfPeople-1
         {
-            let tempDict = [
-                "faceId": response[i]["faceId"].stringValue,
-                "age": response[i]["faceAttributes"]["age"].stringValue,
-                "disgust": response[i]["faceAttributes"]["emotion"]["disgust"].stringValue,
-                "anger": response[i]["faceAttributes"]["emotion"]["anger"].stringValue,
-                "sadness": response[i]["faceAttributes"]["emotion"]["sadness"].stringValue,
-                "happiness": response[i]["faceAttributes"]["emotion"]["happiness"].stringValue,
-                "neutral": response[i]["faceAttributes"]["emotion"]["neutral"].stringValue,
-                "contempt": response[i]["faceAttributes"]["emotion"]["contempt"].stringValue,
-                "surprise": response[i]["faceAttributes"]["emotion"]["surprise"].stringValue,
-                "fear": response[i]["faceAttributes"]["emotion"]["fear"].stringValue,
-                "gender": response[i]["faceAttributes"]["gender"].stringValue,
-                "rWidth": response[i]["faceRectangle"]["width"].stringValue,
-                "rHeight": response[i]["faceRectangle"]["height"].stringValue,
-                "rLeft": response[i]["faceRectangle"]["left"].stringValue,
-                "rTop": response[i]["faceRectangle"]["top"].stringValue
-            ]
+            self.updateGlobalResponse(response: response[i])
 
             //Wait for current ID to be saved on db, so find similars can find a person again.
-            let secondsToDelay = 30.0
-            DispatchQueue.main.asyncAfter(deadline: .now() + secondsToDelay) {
-               let findSimilars = FaceRecognition.shared.findSimilars(faceId:response[i]["faceId"].stringValue,faceIds:faceIdsInCoreData )
+            DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+                _ = self.findSimilars(faceId:response[i]["faceId"].stringValue,faceIds:faceIdsInCoreData )
             }
 
-            globalResponse.append(tempDict)
             globalImageData = image
         }
     }
